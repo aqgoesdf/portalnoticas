@@ -1,1 +1,27 @@
-<!--Desenvolvido por: AqGoEs-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Portal de Notícias</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>Portal Notícias</h1>
+</header>
+
+<nav>
+    {% for categoria in categorias %}
+        <a href="#">{{ categoria.nome }}</a>
+    {% endfor %}
+</nav>
+
+{% block content %}{% endblock %}
+
+<footer>
+    <p>© 2026 Portal Notícias</p>
+</footer>
+
+</body>
+</html>
