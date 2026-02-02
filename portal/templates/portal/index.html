@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Notícias | AqGoEs</title>
+    <link rel="stylesheet" href="{% static 'portal/css/style.css' %}">
+</head>
+<body>
+
+
+    <header><!--Cabeçalho-->
+        <div class="topo">
+            <h1>Portal de Notícias AqGoEs</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Brasil</a></li>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Economia</a></li>
+                <li><a href="#">Esportes</a></li>
+                <li><a href="#">Tecnologia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="destaque-principal">
+            {% if destaque %}
+            <article>
+                {% if destaque.imagem %}
+                    <img src="{{ destaque.imagem.url }}" alt="Iamgem destaquew">
+                {% endif %}
+                <h2>{{ destaque.titulo }}</h2>
+                <p>{{ destaque.resumo }}</p>
+            </article>
+
+            {% endif %}
+        </section>
+
+    </main>
+</body>
+</html>
