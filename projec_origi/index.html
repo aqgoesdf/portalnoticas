@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNews 2026 | Evolução Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones Modernos (Lucide ou Phosphor) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">TECH<span>2026</span></div>
+        <nav>
+            <ul>
+                <li><a href="#html-css">HTML/CSS</a></li>
+                <li><a href="#js">JavaScript</a></li>
+                <li><a href="#python">Python</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <i class="ph ph-magnifying-glass"></i>
+            <i class="ph ph-user"></i>
+        </div>
+    </header>
+
+    <main>
+        <!-- Carrossel de Notícias em Destaque -->
+        <section class="hero-carousel">
+            <div class="carousel-track">
+                <article class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f" alt="IA em 2026">
+                    <div class="carousel-caption">
+                        <span class="tag">Destaque</span>
+                        <h1>O impacto da Computação Quântica no Desenvolvimento Web</h1>
+                    </div>
+                </article>
+            </div>
+            <button class="prev"><i class="ph ph-caret-left"></i></button>
+            <button class="next"><i class="ph ph-caret-right"></i></button>
+        </section>
+
+        <!-- Grade de Notícias Principais -->
+        <section class="news-grid">
+            <article class="card-large">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Desenvolvimento">
+                <div class="content">
+                    <h2>Mastering Next.js 15 & Tailwind v4</h2>
+                    <p>As novas fronteiras do front-end moderno.</p>
+                </div>
+            </article>
+
+            <aside class="sidebar-news">
+                <article class="mini-card">
+                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4" alt="Python">
+                    <div>
+                        <h3>FastAPI vs Django em 2026</h3>
+                        <span>Python | Backend</span>
+                    </div>
+                </article>
+                <article class="mini-card">
+                    <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2" alt="CSS">
+                    <div>
+                        <h3>CSS Anchor Positioning</h3>
+                        <span>CSS | Design</span>
+                    </div>
+                </article>
+                <article class="mini-card">
+                    <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479" alt="JS">
+                    <div>
+                        <h3>O estado do TypeScript</h3>
+                        <span>JS | Ecossistema</span>
+                    </div>
+                </article>
+            </aside>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+:root {
+    --primary: #007AFF;
+    --bg-dark: #0f172a;
+    --text-light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.05);
+    --transition: all 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+/* Glassmorphism Header */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Hero Carousel */
+.hero-carousel {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 40px;
+    left: 5%;
+    max-width: 600px;
+}
+
+/* Grid System */
+.news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0 5%;
+}
+
+.card-large {
+    background: var(--glass);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.card-large:hover {
+    transform: translateY(-5px);
+    border: 1px solid var(--primary);
+}
+
+.mini-card {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    background: var(--glass);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.mini-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
