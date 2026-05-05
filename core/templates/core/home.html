@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h1>Últimas Notícias</h1>
+
+{% for post in posts %}
+  <div style="margin-bottom:20px;">
+    <h2>{{ post.titulo }}</h2>
+    <p>{{ post.conteudo|truncatewords:20 }}</p>
+  </div>
+{% empty %}
+  <p>Nenhuma notícia cadastrada.</p>
+{% endfor %}
+
+{% endblock %}

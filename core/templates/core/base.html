@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog · AQGOES</title>
+  <title>{% block title %}AQGOES{% endblock %}</title>
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
@@ -28,7 +28,7 @@
 <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <header class="sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-    <a href="blog-site.html" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
+    <a href="{% url 'home' %}" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
       NEXUS
     </a>
@@ -69,7 +69,8 @@
 </header>
 
 <main>
-    Corpo do site
+    {% block content %}
+    {% endblock %}
 </main>
 
 <footer>
