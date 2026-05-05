@@ -1,18 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>{% block title %}AQGOES{% endblock %}</title>
-
-    <link rel="stylesheet" href="{% static 'portal/style.css' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
-
-
-    <script>
-      tailwind.config = {
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog · AQGOES</title>
+  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <script>
+    tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -24,9 +21,8 @@
         }
       }
     }
-    </script>
+  </script>
 </head>
-
 <body>
 
 <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
@@ -72,13 +68,10 @@
   </div>
 </header>
 
-<!-- CONTEÚDO -->
 <main>
-    {% block content %}
-    {% endblock %}
+    Corpo do site
 </main>
 
-<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
 <footer>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
@@ -123,19 +116,7 @@
     </div>
   </div>
 </footer>
-
-<script>
-function toggleTheme(){
-    document.documentElement.classList.toggle('dark')
-}
-
-function toggleMenu(){
-    const menu = document.getElementById('mobile-menu')
-    if(menu){
-        menu.classList.toggle('hidden')
-    }
-}
-</script>
-
+<script src="{% static 'core/js/script.js' %}"></script>
 </body>
 </html>
+
