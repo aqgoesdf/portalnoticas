@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}AQGOES{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'portal/style.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <script>
+      tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body:    ['DM Sans', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+    </script>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header class="sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <a href="blog-site.html" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
+      NEXUS
+    </a>
+    <nav class="hidden md:flex items-center gap-6">
+      <a href="blog-site.html">Início</a>
+      <a href="#">HTML | CSS</a>
+      <a href="#">JS</a>
+      <a href="#">Python</a>
+      <a href="#">Bibliotecas</a>
+      <a href="#">Frameworks</a>
+      <a href="blog.html" class="active" style="color:#c8392b;">Blog</a>
+      <a href="sobre.html">Sobre</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema"><span class="knob"></span></button>
+      <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">Assine</a>
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5" style="background:var(--bg);border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+      <a href="blog-site.html" class="mobile-nav-link">Início</a>
+      <a href="#" class="mobile-nav-link">HTML|CSS</a>
+      <a href="#" class="mobile-nav-link">JS</a>
+      <a href="#" class="mobile-nav-link">Python</a>
+      <a href="#" class="mobile-nav-link">Bibliotecas</a>
+      <a href="#" class="mobile-nav-link">Frameworks</a>
+      <a href="blog.html" class="mobile-nav-link active">Blog</a>
+      <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+      <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
+      <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">Assine grátis</a>
+    </nav>
+  </div>
+</header>
+
+<!-- CONTEÚDO -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">AQGOES</div>
+        <p class="text-xs leading-relaxed" style="color:var(--muted);">Jornalismo independente que conecta você ao mundo que importa.</p>
+      </div>
+      <div>
+        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Editorias</h5>
+        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
+          <li><a href="#" style="color:inherit;text-decoration:none;">HTML|CSS</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">JS</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Python</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Frameworks</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Empresa</h5>
+        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
+          <li><a href="sobre.html" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Redação</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Anuncie</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Newsletter</h5>
+        <p class="text-xs mb-3" style="color:var(--muted);">Receba as melhores notícias no seu e-mail.</p>
+        <div class="flex gap-2">
+          <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);"/>
+          <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
+        </div>
+      </div>
+    </div>
+    <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-2" style="border-color:var(--border);">
+      <p class="text-xs" style="color:var(--muted);">© 2026 AQGOES Desenvolvimento. Todos os direitos reservados.</p>
+      <div class="flex gap-4 text-xs" style="color:var(--muted);">
+        <a href="#" style="color:inherit;text-decoration:none;">Privacidade</a>
+        <a href="#" style="color:inherit;text-decoration:none;">Termos</a>
+        <a href="#" style="color:inherit;text-decoration:none;">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleTheme(){
+    document.documentElement.classList.toggle('dark')
+}
+
+function toggleMenu(){
+    const menu = document.getElementById('mobile-menu')
+    if(menu){
+        menu.classList.toggle('hidden')
+    }
+}
+</script>
+
+</body>
+</html>
