@@ -1,12 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR" class="light">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{% block title %}AQGOES{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+  <title>Blog · AQGOES</title>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
   <script>
     tailwind.config = {
@@ -28,7 +28,7 @@
 <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
 <header class="sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-    <a href="{% url 'home' %}" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
+    <a href="blog-site.html" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
       NEXUS
     </a>
@@ -68,56 +68,62 @@
   </div>
 </header>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
+    <main>
+        {% block content %}{% endblock %}
 
-<footer>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-      <div>
-        <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">AQGOES</div>
-        <p class="text-xs leading-relaxed" style="color:var(--muted);">Jornalismo independente que conecta você ao mundo que importa.</p>
-      </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Editorias</h5>
-        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
-          <li><a href="#" style="color:inherit;text-decoration:none;">HTML|CSS</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">JS</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Python</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Frameworks</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Empresa</h5>
-        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
-          <li><a href="sobre.html" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Redação</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Anuncie</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Contato</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Newsletter</h5>
-        <p class="text-xs mb-3" style="color:var(--muted);">Receba as melhores notícias no seu e-mail.</p>
-        <div class="flex gap-2">
-          <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);"/>
-          <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
+        
+    </main>
+
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer class="bg-gray-50 border-t border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">AQGOES</div>
+            <p class="text-xs leading-relaxed" style="color:var(--muted);">Jornalismo independente que conecta você ao mundo que importa.</p>
+          </div>
+          <div>
+            <h5 class="font-semibold text-sm mb-3">Editorias</h5>
+            <ul class="space-y-1.5 text-xs text-gray-500">
+              <li><a href="#" class="hover:text-[#c8392b]">HTML|CSS</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">JS</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">Python</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">Frameworks</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold text-sm mb-3">Empresa</h5>
+            <ul class="space-y-1.5 text-xs text-gray-500">
+              <li><a href="/sobre" class="hover:text-[#c8392b]">Sobre nós</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">Redação</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">Anuncie</a></li>
+              <li><a href="#" class="hover:text-[#c8392b]">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-semibold text-sm mb-3">Newsletter</h5>
+            <p class="text-xs mb-3 text-gray-500">Receba as melhores notícias no seu e-mail.</p>
+            <div class="flex gap-2">
+              <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md border border-gray-300 outline-none focus:border-[#c8392b]"/>
+              <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
+            </div>
+          </div>
+        </div>
+        <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 border-gray-200">
+          <p class="text-xs text-gray-400">© 2026 AQGOES Desenvolvimento. Todos os direitos reservados.</p>
         </div>
       </div>
-    </div>
-    <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-2" style="border-color:var(--border);">
-      <p class="text-xs" style="color:var(--muted);">© 2026 AQGOES Desenvolvimento. Todos os direitos reservados.</p>
-      <div class="flex gap-4 text-xs" style="color:var(--muted);">
-        <a href="#" style="color:inherit;text-decoration:none;">Privacidade</a>
-        <a href="#" style="color:inherit;text-decoration:none;">Termos</a>
-        <a href="#" style="color:inherit;text-decoration:none;">Cookies</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="{% static 'core/js/script.js' %}"></script>
+    </footer>
+
+    <!-- Scripts para o Menu Mobile -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.maxHeight = menu.style.maxHeight === '0px' || !menu.style.maxHeight ? '400px' : '0px';
+        }
+    </script>  
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
-
