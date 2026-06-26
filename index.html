@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="light">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog · AqGoEs</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>AqGoEs · Portal</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -14,521 +14,386 @@
         extend: {
           fontFamily: {
             display: ['Playfair Display', 'serif'],
-            body:    ['DM Sans', 'sans-serif'],
-            mono:    ['JetBrains Mono', 'monospace'],
+            body: ['DM Sans', 'sans-serif'],
+          },
+          colors: {
+            ink: {
+              50:  '#f5f3ef',
+              100: '#e8e4dc',
+              200: '#d0c9bc',
+              300: '#b3a892',
+              400: '#978770',
+              500: '#7d6d58',
+              600: '#65584a',
+              700: '#50453b',
+              800: '#3a3129',
+              900: '#28221c',
+              950: '#161210',
+            },
+            accent: '#c8392b',
+            gold: '#d4a845',
           }
         }
       }
     }
   </script>
+
+
 </head>
 <body>
 
-<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
 <header class="sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-    <a href="#" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b;text-decoration:none;">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b; text-decoration:none;">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
       AqGoEs
     </a>
+
+    <!-- Nav desktop -->
     <nav class="hidden md:flex items-center gap-6">
-       <a href="#" class="active" style="color:#c8392b;">Home</a>
-      <a href="#">Sobre</a>
-      <a href="#">Artigos</a>
-      <a href="#">Contato</a>
+      <a href="index.html">Home</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="blog.html">Blog</a>
+      <a href="contato.html">Contato</a>
     </nav>
+
+    <!-- Direita: toggle + assine + hamburguer -->
     <div class="flex items-center gap-3">
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema"><span class="knob"></span></button>
-      <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">Assine</a>
-      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5" style="background:var(--bg);border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+      <!-- Theme toggle -->
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+        <span class="knob"></span>
+      </button>
+      <!-- Assine só desktop -->
+      <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">
+        Assine
+      </a>
+      <!-- Hamburguer só mobile -->
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5 transition-colors" style="background:var(--bg); border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
       </button>
     </div>
   </div>
-  <div id="mobile-menu" style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
+
+  <!-- ── DRAWER MOBILE ── -->
+  <div id="mobile-menu"
+       style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
     <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-      <a href="blog-site.html" class="mobile-nav-link">Início</a>
-      <a href="#" class="mobile-nav-link">Brasil</a>
-      <a href="#" class="mobile-nav-link">Mundo</a>
-      <a href="#" class="mobile-nav-link">Tecnologia</a>
-      <a href="#" class="mobile-nav-link">Economia</a>
-      <a href="blog.html" class="mobile-nav-link active">Blog</a>
+      <a href="index.html" class="mobile-nav-link">Home</a>
       <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+      <a href="blog.html" class="mobile-nav-link">Artigos</a>
+      <a href="contato.html" class="mobile-nav-link">Contato</a>
       <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
-      <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">Assine grátis</a>
+      <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">
+        Assine grátis
+      </a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- ═══════════════════════════ HERO BLOG ═══════════════════════════ -->
-<section class="blog-hero py-14">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 hero-content">
-    <div class="breadcrumb mb-4 fade-up d1">
-      <a href="blog-site.html">Início</a>
-      <span class="sep">›</span>
-      <span>Blog</span>
+<!-- ═══════════════════════════════════════
+     SEÇÃO 1 — CARROSSEL
+═══════════════════════════════════════ -->
+<section id="carousel-section" class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+  <div class="flex items-center justify-between mb-4">
+    <div>
+      <span class="section-label">Em Destaque</span>
+      <h2 class="section-heading text-2xl font-bold mt-0.5" style="color:var(--text)">Principais Notícias</h2>
     </div>
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-      <div>
-        <span class="section-label fade-up d1" style="color:rgba(200,57,43,.8);">Dev Blog</span>
-        <h1 class="font-display text-4xl md:text-5xl font-black text-white mt-2 leading-tight fade-up d2">
-          Artigos & Tutoriais
-        </h1>
-        <p class="text-white/60 mt-2 text-sm max-w-lg fade-up d3">
-          Conteúdo técnico sobre desenvolvimento web, Python, CSS moderno e as ferramentas que uso no dia a dia.
-        </p>
+    <span class="text-xs" style="color:var(--muted)" id="slide-counter">1 / 4</span>
+  </div>
+
+  <div class="relative rounded-2xl overflow-hidden" style="height: clamp(280px, 52vw, 520px);">
+    <div class="carousel-track h-full" id="track">
+
+      <!-- slide 1 -->
+      <div class="carousel-slide h-full" style="background: linear-gradient(135deg,#1a0a06,#3d1206);">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&q=80" alt="Slide 1" class="w-full h-full object-cover opacity-60"/>
+        <div class="slide-overlay"></div>
+        <div class="absolute bottom-0 left-0 p-6 md:p-10 max-w-2xl">
+          <span class="tag mb-3 fade-up">Mundo</span>
+          <h3 class="font-display text-white text-2xl md:text-4xl font-bold leading-tight fade-up delay-1">Líderes globais debatem novo acordo climático em Genebra</h3>
+          <p class="text-white/75 text-sm mt-2 fade-up delay-2 hidden sm:block">Representantes de 140 países se reúnem para definir metas de emissão para a próxima década.</p>
+          <div class="flex items-center gap-3 mt-4 fade-up delay-3">
+            <img src="https://i.pravatar.cc/28?img=1" class="rounded-full w-7 h-7" alt="autor"/>
+            <span class="text-white/70 text-xs">Ana Luísa Ferreira · 25 Mar 2026</span>
+          </div>
+        </div>
       </div>
-      <!-- Live counter -->
-      <div class="fade-up d4 flex items-center gap-2" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:.6rem 1rem;">
-        <span style="width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;box-shadow:0 0 6px #4ade80;"></span>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(255,255,255,.65);">24 artigos publicados</span>
+
+      <!-- slide 2 -->
+      <div class="carousel-slide h-full">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" alt="Slide 2" class="w-full h-full object-cover opacity-50"/>
+        <div class="slide-overlay"></div>
+        <div class="absolute bottom-0 left-0 p-6 md:p-10 max-w-2xl">
+          <span class="tag tag-gold mb-3">Tecnologia</span>
+          <h3 class="font-display text-white text-2xl md:text-4xl font-bold leading-tight">Nova geração de chips quânticos promete revolucionar IA</h3>
+          <p class="text-white/75 text-sm mt-2 hidden sm:block">Startup americana apresenta processador 10× mais eficiente que os modelos atuais.</p>
+          <div class="flex items-center gap-3 mt-4">
+            <img src="https://i.pravatar.cc/28?img=5" class="rounded-full w-7 h-7" alt="autor"/>
+            <span class="text-white/70 text-xs">Carlos Menezes · 24 Mar 2026</span>
+          </div>
+        </div>
       </div>
+
+      <!-- slide 3 -->
+      <div class="carousel-slide h-full">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80" alt="Slide 3" class="w-full h-full object-cover opacity-50"/>
+        <div class="slide-overlay"></div>
+        <div class="absolute bottom-0 left-0 p-6 md:p-10 max-w-2xl">
+          <span class="tag mb-3">Economia</span>
+          <h3 class="font-display text-white text-2xl md:text-4xl font-bold leading-tight">Bolsa de valores atinge recorde histórico após dados positivos</h3>
+          <p class="text-white/75 text-sm mt-2 hidden sm:block">O Ibovespa superou 180 mil pontos impulsionado por resultados do setor de commodities.</p>
+          <div class="flex items-center gap-3 mt-4">
+            <img src="https://i.pravatar.cc/28?img=9" class="rounded-full w-7 h-7" alt="autor"/>
+            <span class="text-white/70 text-xs">Rodrigo Alves · 23 Mar 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- slide 4 -->
+      <div class="carousel-slide h-full">
+        <img src="https://images.unsplash.com/photo-1542281286-9e0a16bb7366?w=1200&q=80" alt="Slide 4" class="w-full h-full object-cover opacity-50"/>
+        <div class="slide-overlay"></div>
+        <div class="absolute bottom-0 left-0 p-6 md:p-10 max-w-2xl">
+          <span class="tag mb-3">Brasil</span>
+          <h3 class="font-display text-white text-2xl md:text-4xl font-bold leading-tight">Governo anuncia pacote de R$40 bi para infraestrutura nacional</h3>
+          <p class="text-white/75 text-sm mt-2 hidden sm:block">Investimentos incluem saneamento, mobilidade urbana e energia renovável em 12 estados.</p>
+          <div class="flex items-center gap-3 mt-4">
+            <img src="https://i.pravatar.cc/28?img=12" class="rounded-full w-7 h-7" alt="autor"/>
+            <span class="text-white/70 text-xs">Beatriz Santos · 22 Mar 2026</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /track -->
+
+    <!-- Progress bar -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.15);">
+      <div id="progress-bar" style="width:0%;"></div>
     </div>
 
-    <!-- ── CATEGORY FILTER BAR ── -->
-    <div class="cat-bar mt-8 fade-up d4" id="cat-bar">
-      <button class="cat-btn active" data-cat="todos" onclick="filterCat(this)">Todos</button>
-      <button class="cat-btn" data-cat="tecnologia" onclick="filterCat(this)">🖥️ Tecnologia</button>
-      <button class="cat-btn" data-cat="python" onclick="filterCat(this)">🐍 Python</button>
-      <button class="cat-btn" data-cat="front-end" onclick="filterCat(this)">🎨 Front-end</button>
-      <button class="cat-btn" data-cat="css" onclick="filterCat(this)">✨ CSS & Design</button>
-      <button class="cat-btn" data-cat="javascript" onclick="filterCat(this)">⚡ JavaScript</button>
-      <button class="cat-btn" data-cat="django" onclick="filterCat(this)">🦄 Django</button>
-    </div>
+    <!-- Prev / Next -->
+    <button class="carousel-btn" style="left:16px;" onclick="changeSlide(-1)" aria-label="Anterior">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="carousel-btn" style="right:16px;" onclick="changeSlide(1)" aria-label="Próximo">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2" id="dots"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════ CONTEÚDO PRINCIPAL ═══════════════════════════ -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-  <div class="blog-layout">
 
-    <!-- ══ COLUNA POSTS ══ -->
+<!-- ═══════════════════════════════════════
+     SEÇÃO 2 — 4 CARDS DE NOTÍCIAS
+═══════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+  <div class="flex items-center justify-between mb-6">
     <div>
+      <span class="section-label">Mais Lidas</span>
+      <h2 class="section-heading text-2xl font-bold mt-0.5" style="color:var(--text)">Notícias Recentes</h2>
+    </div>
+    <a href="#" class="read-more hidden sm:block">Ver todas →</a>
+  </div>
 
-      <!-- ── FEATURED POST ── -->
-      <div class="featured-card reveal mb-8" id="featured-wrap">
-        <div class="featured-img-wrap">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80" alt="featured"/>
-          <!-- Floating badge -->
-          <div style="position:absolute;top:1rem;left:1rem;z-index:2;">
-            <span class="featured-badge">✦ Destaque</span>
-          </div>
-        </div>
-        <div class="featured-body">
-          <div class="featured-meta">
-            <span class="featured-badge" style="background:#f0db4f;color:#6b5900;">JavaScript</span>
-            <span class="featured-time">28 Mar 2026 · 8 min de leitura</span>
-          </div>
-          <h2 class="featured-title">
-            Dominando o Event Loop: como o JavaScript realmente funciona por baixo dos panos
-          </h2>
-          <p class="featured-excerpt">
-            Call stack, Web APIs, Callback Queue e Microtasks — entenda de vez por que seu código assíncrono se comporta de maneiras inesperadas e como escrever código mais previsível.
-          </p>
-          <div class="flex items-center justify-between flex-wrap gap-3 mt-auto">
-            <div class="featured-author">
-              <img src="https://i.pravatar.cc/40?img=11" alt="autor"/>
-              <div>
-                <div class="featured-author-name">Lucas Dev</div>
-                <div class="featured-author-role">Engenheiro Front-end</div>
-              </div>
-            </div>
-            <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
+  <div class="cards-grid">
+
+    <!-- card 1 -->
+    <article class="news-card">
+      <div class="relative overflow-hidden" style="height:180px;">
+        <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?w=600&q=75" alt="card1" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
+        <span class="tag absolute top-3 left-3">Ciência</span>
+      </div>
+      <div class="p-4">
+        <h4 class="font-display font-bold text-base leading-snug mb-2" style="color:var(--text)">Telescópio James Webb capta imagens de galáxia a 13 bilhões de anos-luz</h4>
+        <p class="text-xs leading-relaxed mb-3" style="color:var(--muted)">Descoberta pode redefinir o que sabemos sobre a formação do universo primitivo.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-xs" style="color:var(--muted)">20 Mar 2026</span>
+          <a href="#" class="read-more">Leia mais →</a>
         </div>
       </div>
+    </article>
 
-      <!-- ── RESULTS HEADER ── -->
-      <div class="flex items-center justify-between mb-5">
-        <h2 class="font-display text-xl font-bold" style="color:var(--text);">
-          <span id="results-label">Todos os artigos</span>
-          <span id="results-count" class="ml-2 text-sm font-normal" style="color:var(--muted);font-family:'JetBrains Mono',monospace;">(12)</span>
-        </h2>
-        <div style="font-size:.75rem;color:var(--muted);">
-          Ordenar por: <span style="color:#c8392b;font-weight:600;cursor:pointer;">Recentes ↓</span>
+    <!-- card 2 -->
+    <article class="news-card">
+      <div class="relative overflow-hidden" style="height:180px;">
+        <img src="https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?w=600&q=75" alt="card2" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
+        <span class="tag absolute top-3 left-3" style="background:#2563eb;">Esportes</span>
+      </div>
+      <div class="p-4">
+        <h4 class="font-display font-bold text-base leading-snug mb-2" style="color:var(--text)">Seleção Brasileira convoca novos talentos para amistosos de junho</h4>
+        <p class="text-xs leading-relaxed mb-3" style="color:var(--muted)">Técnico aposta em renovação com seis estreantes na lista divulgada ontem.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-xs" style="color:var(--muted)">19 Mar 2026</span>
+          <a href="#" class="read-more">Leia mais →</a>
         </div>
       </div>
+    </article>
 
-      <!-- ── POST GRID ── -->
-      <div class="post-grid" id="post-grid">
-
-        <!-- post 1 -->
-        <article class="post-card reveal" data-cat="python" data-tags="python,django,backend" data-title="Construindo uma REST API com Django REST Framework do zero">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600&q=75" alt="post1"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(55,118,171,.15);color:#3776ab;">🐍 Python</span>
-            <h3 class="post-card-title">Construindo uma REST API com Django REST Framework do zero</h3>
-            <p class="post-card-excerpt">Aprenda a criar endpoints robustos, autenticação JWT e serializers personalizados com DRF.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=3" alt="a"/>
-                <span class="post-card-author-name">Ana Codes</span>
-              </div>
-              <span class="post-card-read">6 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 2 -->
-        <article class="post-card reveal" data-cat="css" data-tags="css,tailwind,design" data-title="Tailwind CSS v4: tudo que mudou e como migrar seu projeto">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=600&q=75" alt="post2"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(56,189,248,.15);color:#0891b2;">✨ CSS & Design</span>
-            <h3 class="post-card-title">Tailwind CSS v4: tudo que mudou e como migrar seu projeto</h3>
-            <p class="post-card-excerpt">Da configuração com PostCSS ao novo sistema de design tokens nativos — guia completo de migração.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=7" alt="a"/>
-                <span class="post-card-author-name">Carlos UI</span>
-              </div>
-              <span class="post-card-read">5 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 3 -->
-        <article class="post-card reveal" data-cat="front-end" data-tags="html,css,acessibilidade" data-title="Web Accessibility: construindo para todos os usuários">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=75" alt="post3"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(200,57,43,.12);color:#c8392b;">🎨 Front-end</span>
-            <h3 class="post-card-title">Web Accessibility: construindo interfaces para todos os usuários</h3>
-            <p class="post-card-excerpt">ARIA, contraste, foco visível e semântica HTML — o guia prático de acessibilidade que você precisava.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=14" alt="a"/>
-                <span class="post-card-author-name">Beatriz A11y</span>
-              </div>
-              <span class="post-card-read">7 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 4 -->
-        <article class="post-card reveal" data-cat="django" data-tags="django,python,deploy" data-title="Deploy de Django no Railway em 15 minutos">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=75" alt="post4"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(68,183,139,.15);color:#0c4b33;">🦄 Django</span>
-            <h3 class="post-card-title">Deploy de aplicação Django no Railway em 15 minutos</h3>
-            <p class="post-card-excerpt">Variáveis de ambiente, banco PostgreSQL gratuito e CI/CD automático — do git push ao ar.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=18" alt="a"/>
-                <span class="post-card-author-name">Rafael Deploy</span>
-              </div>
-              <span class="post-card-read">4 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 5 -->
-        <article class="post-card reveal" data-cat="javascript" data-tags="javascript,async,promises" data-title="Async/Await vs Promises: quando usar cada um">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=600&q=75" alt="post5"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(240,219,79,.2);color:#6b5900;">⚡ JavaScript</span>
-            <h3 class="post-card-title">Async/Await vs Promises: quando usar cada abordagem</h3>
-            <p class="post-card-excerpt">Comparativo completo com exemplos reais, tratamento de erros e casos onde cada padrão brilha.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=22" alt="a"/>
-                <span class="post-card-author-name">Pedro JS</span>
-              </div>
-              <span class="post-card-read">6 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 6 -->
-        <article class="post-card reveal" data-cat="tecnologia" data-tags="tecnologia,ia,ferramentas" data-title="As 10 extensões do VS Code que todo dev precisa em 2026">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=75" alt="post6"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(124,58,237,.12);color:#7c3aed;">🖥️ Tecnologia</span>
-            <h3 class="post-card-title">As 10 extensões do VS Code que todo dev precisa em 2026</h3>
-            <p class="post-card-excerpt">De produtividade a debug visual — ferramentas testadas e aprovadas no dia a dia de desenvolvimento.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=27" alt="a"/>
-                <span class="post-card-author-name">Marina Tools</span>
-              </div>
-              <span class="post-card-read">5 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 7 -->
-        <article class="post-card reveal" data-cat="python" data-tags="python,pandas,dados" data-title="Pandas para iniciantes: análise de dados com Python">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=75" alt="post7"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(55,118,171,.15);color:#3776ab;">🐍 Python</span>
-            <h3 class="post-card-title">Pandas para iniciantes: análise de dados com Python na prática</h3>
-            <p class="post-card-excerpt">DataFrames, limpeza de dados, groupby e visualização com Matplotlib — tudo em um projeto real.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=31" alt="a"/>
-                <span class="post-card-author-name">Sofia Data</span>
-              </div>
-              <span class="post-card-read">9 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- post 8 -->
-        <article class="post-card reveal" data-cat="css" data-tags="css,animacao,keyframes" data-title="CSS Animations avançadas: além do transition">
-          <div class="post-card-img">
-            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&q=75" alt="post8"/>
-          </div>
-          <div class="post-card-body">
-            <span class="post-card-cat" style="background:rgba(56,189,248,.15);color:#0891b2;">✨ CSS & Design</span>
-            <h3 class="post-card-title">CSS Animations avançadas: além do transition básico</h3>
-            <p class="post-card-excerpt">@keyframes, animation-timeline, scroll-driven animations e como criar micro-interações que impressionam.</p>
-            <div class="post-card-footer">
-              <div class="post-card-author">
-                <img src="https://i.pravatar.cc/28?img=36" alt="a"/>
-                <span class="post-card-author-name">Diego CSS</span>
-              </div>
-              <span class="post-card-read">7 min</span>
-                 <a href="#" class="read-btn">
-              Ler artigo
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            </div>
-          </div>
-        </article>
-
-      </div><!-- /post-grid -->
-
-      <!-- No results -->
-      <div class="no-results" id="no-results">
-        <div style="font-size:3rem;margin-bottom:.75rem;">🔍</div>
-        <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text);">Nenhum resultado encontrado</h3>
-        <p style="color:var(--muted);font-size:.875rem;">Tente outra categoria ou tag.</p>
+    <!-- card 3 -->
+    <article class="news-card">
+      <div class="relative overflow-hidden" style="height:180px;">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=75" alt="card3" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
+        <span class="tag absolute top-3 left-3" style="background:#16a34a;">Saúde</span>
       </div>
-
-      <!-- ── PAGINATION ── -->
-      <div class="flex justify-center mt-10 reveal">
-        <div class="pagination">
-          <a href="#" class="page-btn arrow">←</a>
-          <a href="#" class="page-btn active">1</a>
-          <a href="#" class="page-btn">2</a>
-          <a href="#" class="page-btn">3</a>
-          <span class="page-btn" style="border:none;background:transparent;cursor:default;">…</span>
-          <a href="#" class="page-btn">8</a>
-          <a href="#" class="page-btn arrow">→</a>
+      <div class="p-4">
+        <h4 class="font-display font-bold text-base leading-snug mb-2" style="color:var(--text)">Pesquisadores desenvolvem vacina contra Alzheimer com 80% de eficácia</h4>
+        <p class="text-xs leading-relaxed mb-3" style="color:var(--muted)">Ensaio clínico fase 3 mostrou resultados promissores em grupos acima de 60 anos.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-xs" style="color:var(--muted)">18 Mar 2026</span>
+          <a href="#" class="read-more">Leia mais →</a>
         </div>
       </div>
+    </article>
 
-    </div><!-- /posts col -->
-
-    <!-- ══ SIDEBAR ══ -->
-    <aside class="sidebar">
-
-      <!-- Widget: Busca -->
-      <div class="sidebar-widget reveal">
-        <div class="widget-header">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#c8392b" stroke-width="1.5"/><path d="M10 10l3 3" stroke="#c8392b" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <span class="widget-title">Buscar</span>
-        </div>
-        <div class="widget-body">
-          <div class="search-wrap">
-            <input type="text" class="search-input" id="search-input" placeholder="Pesquisar artigos…" oninput="handleSearch(this.value)" autocomplete="off"/>
-            <svg class="search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <div class="search-results" id="search-results"></div>
-          </div>
+    <!-- card 4 -->
+    <article class="news-card">
+      <div class="relative overflow-hidden" style="height:180px;">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=75" alt="card4" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
+        <span class="tag absolute top-3 left-3 tag-gold">Inovação</span>
+      </div>
+      <div class="p-4">
+        <h4 class="font-display font-bold text-base leading-snug mb-2" style="color:var(--text)">Brasil sobe 12 posições no ranking global de startups de tecnologia verde</h4>
+        <p class="text-xs leading-relaxed mb-3" style="color:var(--muted)">Relatório aponta crescimento de 43% no número de empresas de energia limpa no país.</p>
+        <div class="flex items-center justify-between">
+          <span class="text-xs" style="color:var(--muted)">17 Mar 2026</span>
+          <a href="#" class="read-more">Leia mais →</a>
         </div>
       </div>
+    </article>
 
-      <!-- Widget: Categorias -->
-      <div class="sidebar-widget reveal">
-        <div class="widget-header">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="5" height="5" rx="1.5" fill="#c8392b"/><rect x="9" y="1" width="5" height="5" rx="1.5" fill="#c8392b" opacity=".5"/><rect x="1" y="9" width="5" height="5" rx="1.5" fill="#c8392b" opacity=".5"/><rect x="9" y="9" width="5" height="5" rx="1.5" fill="#c8392b"/></svg>
-          <span class="widget-title">Categorias</span>
-        </div>
-        <div class="widget-body" style="padding-top:.6rem;padding-bottom:.6rem;">
-          <div class="cat-list">
-            <a href="#" class="cat-list-item active-cat" onclick="sidebarCat(event,'todos')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#c8392b;"></span>Todos os posts</span>
-              <span class="cat-count">12</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'tecnologia')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#7c3aed;"></span>Tecnologia</span>
-              <span class="cat-count">3</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'python')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#3776ab;"></span>Python</span>
-              <span class="cat-count">4</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'front-end')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#c8392b;"></span>Front-end</span>
-              <span class="cat-count">2</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'css')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#0891b2;"></span>CSS & Design</span>
-              <span class="cat-count">3</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'javascript')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#b8a82a;"></span>JavaScript</span>
-              <span class="cat-count">2</span>
-            </a>
-            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'django')">
-              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#44b78b;"></span>Django</span>
-              <span class="cat-count">2</span>
-            </a>
+  </div>
+
+  <div class="text-center mt-5 sm:hidden">
+    <a href="#" class="read-more text-sm">Ver todas as notícias →</a>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SEÇÃO 3 — CHAMADA PARA AÇÃO
+═══════════════════════════════════════ -->
+<section class="cta-section my-8 py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center relative z-10">
+    <span class="inline-block text-xs tracking-widest uppercase font-bold text-white/60 mb-3">Nosso Blog</span>
+    <h2 class="font-display text-3xl md:text-5xl font-black text-white leading-tight mb-4">
+      Análises profundas,<br class="hidden sm:block"/> sem pressa e sem ruído
+    </h2>
+    <p class="text-white/75 text-base md:text-lg mb-8 max-w-xl mx-auto">
+      No blog NEXUS, nossos editores e colunistas vão além das manchetes. Leituras que informam, provocam e inspiram.
+    </p>
+    <a href="#" class="cta-btn text-base">
+      Explorar o Blog &rarr;
+    </a>
+    <p class="text-white/45 text-xs mt-5">Sem cadastro. Totalmente gratuito.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     SEÇÃO 4 — NOTÍCIA DESTAQUE + LATERAL
+═══════════════════════════════════════ -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-8 mb-12">
+
+  <div class="flex items-center justify-between mb-6">
+    <div>
+      <span class="section-label">Especial</span>
+      <h2 class="section-heading text-2xl font-bold mt-0.5" style="color:var(--text)">Notícia Destaque</h2>
+    </div>
+    <a href="#" class="read-more hidden sm:block">Caderno completo →</a>
+  </div>
+
+  <div class="feature-grid">
+
+    <!-- NOTÍCIA PRINCIPAL GRANDE -->
+    <article class="news-card relative overflow-hidden" style="min-height:420px;">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=80" alt="destaque" class="w-full h-full object-cover absolute inset-0 transition-transform duration-700 hover:scale-103"/>
+      <div class="slide-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+        <span class="tag mb-3">Especial</span>
+        <h3 class="font-display text-white text-xl md:text-3xl font-bold leading-tight mb-3">
+          A corrida pelo controle da órbita terrestre baixa — quem vencerá a nova guerra espacial?
+        </h3>
+        <p class="text-white/70 text-sm mb-4 hidden md:block">
+          Mais de 6.000 satélites já circulam a Terra e especialistas alertam para riscos de colisão, interferência em comunicações e militarização do espaço.
+        </p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <img src="https://i.pravatar.cc/28?img=22" class="rounded-full w-7 h-7" alt="autor"/>
+            <span class="text-white/60 text-xs">Marcelo Vieira · 21 Mar 2026</span>
           </div>
+          <a href="#" class="text-xs font-semibold text-white underline underline-offset-2">Ler reportagem</a>
         </div>
       </div>
+    </article>
 
-      <!-- Widget: Tags -->
-      <div class="sidebar-widget reveal">
-        <div class="widget-header">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M1 7.5L7.5 1H14v6.5l-6.5 6.5L1 7.5z" stroke="#c8392b" stroke-width="1.3" stroke-linejoin="round"/><circle cx="11" cy="4" r="1.2" fill="#c8392b"/></svg>
-          <span class="widget-title">Tags</span>
-        </div>
-        <div class="widget-body">
-          <div class="tags-wrap" id="tags-wrap">
-            <a href="#" class="tag-pill" onclick="filterTag(event,'python')">python</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'django')">django</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'javascript')">javascript</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'css')">css</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'tailwind')">tailwind</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'html')">html</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'backend')">backend</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'deploy')">deploy</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'async')">async</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'pandas')">pandas</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'animacao')">animação</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'ia')">ia</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'acessibilidade')">acessibilidade</a>
-            <a href="#" class="tag-pill" onclick="filterTag(event,'dados')">dados</a>
+    <!-- LISTA LATERAL DE 3 NOTÍCIAS -->
+    <div class="side-list">
+
+      <!-- item 1 -->
+      <article class="news-card p-4">
+        <div class="side-item">
+          <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?w=200&q=70" alt="side1"/>
+          <div>
+            <span class="tag mb-2" style="background:#7c3aed; font-size:.62rem;">Geopolítica</span>
+            <h4 class="font-display font-bold text-sm leading-snug mb-1" style="color:var(--text)">Tensões no Mar do Sul da China escalam com novos exercícios navais</h4>
+            <span class="text-xs" style="color:var(--muted)">24 Mar 2026 · 4 min</span>
           </div>
         </div>
-      </div>
+      </article>
 
-      <!-- Widget: Posts Recentes -->
-      <div class="sidebar-widget reveal">
-        <div class="widget-header">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="13" height="13" rx="2" stroke="#c8392b" stroke-width="1.3"/><path d="M4 5h7M4 8h5M4 11h4" stroke="#c8392b" stroke-width="1.3" stroke-linecap="round"/></svg>
-          <span class="widget-title">Posts Recentes</span>
+      <!-- item 2 -->
+      <article class="news-card p-4">
+        <div class="side-item">
+          <img src="https://images.unsplash.com/photo-1578345566576-2fdddf6afb73?w=200&q=70" alt="side2"/>
+          <div>
+            <span class="tag mb-2" style="background:#0891b2; font-size:.62rem;">Energia</span>
+            <h4 class="font-display font-bold text-sm leading-snug mb-1" style="color:var(--text)">Fusão nuclear atinge novo recorde de tempo sustentado em laboratório europeu</h4>
+            <span class="text-xs" style="color:var(--muted)">23 Mar 2026 · 6 min</span>
+          </div>
         </div>
-        <div class="widget-body" style="padding-top:.5rem;padding-bottom:.5rem;">
+      </article>
 
-          <div class="recent-item">
-            <div class="recent-thumb">
-              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=120&q=60" alt="r1"/>
-            </div>
-            <div>
-              <a href="#" class="recent-title">Dominando o Event Loop no JavaScript</a>
-              <div class="recent-date">28 Mar 2026</div>
-            </div>
+      <!-- item 3 -->
+      <article class="news-card p-4">
+        <div class="side-item">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=200&q=70" alt="side3"/>
+          <div>
+            <span class="tag mb-2" style="background:#ca8a04; font-size:.62rem;">Negócios</span>
+            <h4 class="font-display font-bold text-sm leading-snug mb-1" style="color:var(--text)">Maior fusão do setor financeiro em 15 anos une bancos de três continentes</h4>
+            <span class="text-xs" style="color:var(--muted)">22 Mar 2026 · 5 min</span>
           </div>
-
-          <div class="recent-item">
-            <div class="recent-thumb">
-              <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=120&q=60" alt="r2"/>
-            </div>
-            <div>
-              <a href="#" class="recent-title">REST API com Django REST Framework</a>
-              <div class="recent-date">24 Mar 2026</div>
-            </div>
-          </div>
-
-          <div class="recent-item">
-            <div class="recent-thumb">
-              <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=120&q=60" alt="r3"/>
-            </div>
-            <div>
-              <a href="#" class="recent-title">Tailwind CSS v4: guia de migração</a>
-              <div class="recent-date">20 Mar 2026</div>
-            </div>
-          </div>
-
-          <div class="recent-item">
-            <div class="recent-thumb">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&q=60" alt="r4"/>
-            </div>
-            <div>
-              <a href="#" class="recent-title">Pandas na prática: análise de dados</a>
-              <div class="recent-date">17 Mar 2026</div>
-            </div>
-          </div>
-
         </div>
-      </div>
+      </article>
 
-      <!-- Widget: Newsletter -->
-      <div class="sidebar-widget reveal" style="background:#c8392b;border-color:#c8392b;">
-        <div style="padding:1.4rem 1.3rem;">
-          <div style="font-size:1.4rem;margin-bottom:.5rem;">📬</div>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem;">Receba novos artigos</h3>
-          <p style="font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:1rem;line-height:1.5;">Sem spam. Apenas conteúdo técnico de qualidade toda semana.</p>
-          <input type="email" placeholder="seu@email.com" style="width:100%;padding:.6rem .85rem;border-radius:6px;border:none;font-size:.82rem;outline:none;margin-bottom:.6rem;font-family:'DM Sans',sans-serif;"/>
-          <button style="width:100%;padding:.6rem;border-radius:6px;background:#fff;color:#c8392b;font-size:.82rem;font-weight:700;border:none;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
-            Assinar newsletter
-          </button>
-        </div>
-      </div>
-
-    </aside><!-- /sidebar -->
-
-  </div><!-- /blog-layout -->
-</div>
+    </div><!-- /side-list -->
+  </div>
+</section>
 
 </main>
 
-<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
 <footer>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
       <div>
         <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">NEXUS</div>
-        <p class="text-xs leading-relaxed" style="color:var(--muted);">Jornalismo independente que conecta você ao mundo que importa.</p>
+        <p class="text-xs leading-relaxed" style="color:var(--muted)">Jornalismo independente que conecta você ao mundo que importa.</p>
       </div>
       <div>
         <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Editorias</h5>
@@ -542,7 +407,7 @@
       <div>
         <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Empresa</h5>
         <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
-          <li><a href="sobre.html" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
+          <li><a href="#" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
           <li><a href="#" style="color:inherit;text-decoration:none;">Redação</a></li>
           <li><a href="#" style="color:inherit;text-decoration:none;">Anuncie</a></li>
           <li><a href="#" style="color:inherit;text-decoration:none;">Contato</a></li>
@@ -552,7 +417,7 @@
         <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Newsletter</h5>
         <p class="text-xs mb-3" style="color:var(--muted);">Receba as melhores notícias no seu e-mail.</p>
         <div class="flex gap-2">
-          <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);"/>
+          <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);" />
           <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
         </div>
       </div>
@@ -567,7 +432,11 @@
     </div>
   </div>
 </footer>
- 
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
 <script src="js/script.js"></script>
+
 </body>
 </html>
