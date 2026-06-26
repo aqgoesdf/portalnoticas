@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus · Notícias que Importam</title>
+  <title>Artigos · AqGoEs-DeV</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/style.css">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -18,17 +17,10 @@
           },
           colors: {
             ink: {
-              50:  '#f5f3ef',
-              100: '#e8e4dc',
-              200: '#d0c9bc',
-              300: '#b3a892',
-              400: '#978770',
-              500: '#7d6d58',
-              600: '#65584a',
-              700: '#50453b',
-              800: '#3a3129',
-              900: '#28221c',
-              950: '#161210',
+              50:  '#f5f3ef', 100: '#e8e4dc', 200: '#d0c9bc',
+              300: '#b3a892', 400: '#978770', 500: '#7d6d58',
+              600: '#65584a', 700: '#50453b', 800: '#3a3129',
+              900: '#28221c', 950: '#161210',
             },
             accent: '#c8392b',
             gold: '#d4a845',
@@ -37,19 +29,474 @@
       }
     }
   </script>
+  <style>
+    /* ── CSS Variables ── */
+    html.light {
+      --bg: #f5f3ef;
+      --surface: #fff;
+      --surface2: #f0ede8;
+      --text: #28221c;
+      --muted: #7d6d58;
+      --border: #d0c9bc;
+      --shadow: rgba(0,0,0,.07);
+    }
+    html.dark {
+      --bg: #161210;
+      --surface: #1e1a16;
+      --surface2: #28221c;
+      --text: #e8e4dc;
+      --muted: #978770;
+      --border: #3a3129;
+      --shadow: rgba(0,0,0,.35);
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background .3s, color .3s;
+    }
+    a { color: var(--text); text-decoration: none; }
 
+    /* ── HEADER ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 8px var(--shadow);
+    }
+    header nav a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    header nav a:hover, header nav a.active { color: #c8392b; }
+    .mobile-nav-link {
+      display: block;
+      padding: .6rem .75rem;
+      border-radius: 8px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: background .2s;
+    }
+    .mobile-nav-link:hover { background: var(--surface2); }
+
+    /* ── THEME TOGGLE ── */
+    .theme-toggle {
+      width: 44px; height: 24px;
+      border-radius: 999px;
+      background: var(--border);
+      border: none; cursor: pointer;
+      position: relative; transition: background .3s;
+    }
+    html.dark .theme-toggle { background: #c8392b; }
+    .theme-toggle .knob {
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      transition: transform .3s;
+    }
+    html.dark .theme-toggle .knob { transform: translateX(20px); }
+
+    /* ── PAGE LAYOUT ── */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .page-hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #c8392b;
+      margin-bottom: .6rem;
+    }
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: .5rem;
+    }
+    .page-hero p {
+      font-size: .9rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .filter-btn {
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: #c8392b;
+      border-color: #c8392b;
+      color: #fff;
+    }
+
+    /* ── FEATURED ARTICLE ── */
+    .featured-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 12px var(--shadow);
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 640px) { .featured-card { grid-template-columns: 1fr; } }
+    .featured-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      min-height: 260px;
+    }
+    .featured-card-body {
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: .75rem;
+    }
+    .featured-badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      background: #c8392b; color: #fff;
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .featured-card-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+    }
+    .featured-card-body h2 a:hover { color: #c8392b; }
+    .featured-card-body p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .article-meta {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .75rem; color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .article-meta .sep { opacity: .4; }
+    .read-more {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .8rem; font-weight: 600;
+      color: #c8392b;
+      transition: gap .2s;
+    }
+    .read-more:hover { gap: .7rem; }
+
+    /* ── ARTICLES GRID ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+    }
+    @media (max-width: 640px) { .articles-grid { grid-template-columns: 1fr; } }
+
+    /* ── ARTICLE CARD ── */
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .article-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+    .article-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .article-card-body { padding: 1.1rem 1.2rem 1.3rem; flex: 1; display: flex; flex-direction: column; gap: .55rem; }
+    .cat-tag {
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      background: var(--surface2);
+      color: var(--muted);
+      width: fit-content;
+      border: 1px solid var(--border);
+    }
+    .cat-tag.tech { background: #ede9fe; color: #7c3aed; border-color: #c4b5fd; }
+    .cat-tag.python { background: #e0f0ff; color: #3776ab; border-color: #93c5fd; }
+    .cat-tag.css { background: #e0f8ff; color: #0891b2; border-color: #7dd3fc; }
+    .cat-tag.js { background: #fefce8; color: #b8a82a; border-color: #fde68a; }
+    .cat-tag.django { background: #dcfce7; color: #44b78b; border-color: #86efac; }
+    html.dark .cat-tag.tech { background: #2d1b69; color: #a78bfa; border-color: #4c1d95; }
+    html.dark .cat-tag.python { background: #0c2340; color: #60a5fa; border-color: #1e3a5f; }
+    html.dark .cat-tag.css { background: #082f49; color: #38bdf8; border-color: #0c4a6e; }
+    html.dark .cat-tag.js { background: #2c2a00; color: #fcd34d; border-color: #854d0e; }
+    html.dark .cat-tag.django { background: #052e16; color: #4ade80; border-color: #14532d; }
+
+    .article-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .article-card-body h3 a:hover { color: #c8392b; }
+    .article-card-body p { font-size: .8rem; color: var(--muted); line-height: 1.55; flex: 1; }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto;
+      padding-top: .75rem;
+      border-top: 1px solid var(--border);
+      font-size: .72rem;
+      color: var(--muted);
+    }
+    .reading-time {
+      display: flex; align-items: center; gap: .3rem;
+    }
+
+    /* ── PAGINATION ── */
+    .pagination {
+      display: flex; align-items: center; justify-content: center;
+      gap: .5rem;
+      margin-top: 2.5rem;
+    }
+    .page-btn {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: .82rem; font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .page-btn:hover { border-color: #c8392b; color: #c8392b; }
+    .page-btn.active { background: #c8392b; border-color: #c8392b; color: #fff; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+    .sidebar-widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px var(--shadow);
+    }
+    .widget-header {
+      display: flex; align-items: center; gap: .55rem;
+      padding: .9rem 1.15rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .widget-title {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .widget-body { padding: 1rem 1.15rem; }
+
+    /* Search */
+    .search-wrap { position: relative; }
+    .search-input {
+      width: 100%;
+      padding: .6rem 2.2rem .6rem .9rem;
+      border-radius: 7px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: .82rem;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-input:focus { border-color: #c8392b; }
+    .search-icon {
+      position: absolute; right: .7rem; top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted); pointer-events: none;
+    }
+    .search-results {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 16px var(--shadow);
+      z-index: 50;
+      display: none;
+    }
+    .search-results.open { display: block; }
+    .search-result-item {
+      padding: .65rem .9rem;
+      font-size: .8rem;
+      color: var(--text);
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    .search-result-item:last-child { border-bottom: none; }
+    .search-result-item:hover { background: var(--surface2); }
+
+    /* Categories */
+    .cat-list { display: flex; flex-direction: column; }
+    .cat-list-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .5rem .4rem;
+      border-radius: 6px;
+      font-size: .82rem;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      text-decoration: none;
+    }
+    .cat-list-item:hover, .cat-list-item.active-cat { background: var(--surface2); color: var(--text); }
+    .cat-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: .55rem; flex-shrink: 0; }
+    .cat-count {
+      font-size: .7rem; font-weight: 700;
+      background: var(--surface2);
+      color: var(--muted);
+      padding: .1rem .45rem;
+      border-radius: 999px;
+      min-width: 22px;
+      text-align: center;
+    }
+    .cat-list-item.active-cat .cat-count { background: #c8392b; color: #fff; }
+
+    /* Tags */
+    .tags-wrap { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tag-pill {
+      padding: .3rem .75rem;
+      border-radius: 999px;
+      font-size: .73rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .tag-pill:hover, .tag-pill.active { background: #c8392b; border-color: #c8392b; color: #fff; }
+
+    /* Recent posts */
+    .recent-item {
+      display: flex; gap: .85rem; align-items: flex-start;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .recent-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .recent-thumb {
+      width: 56px; height: 48px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .recent-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .recent-title {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      display: block;
+      margin-bottom: .25rem;
+    }
+    .recent-title:hover { color: #c8392b; }
+    .recent-date { font-size: .7rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { animation: fadeUp .45s ease both; }
+    .article-card:nth-child(1) { animation-delay: .05s; }
+    .article-card:nth-child(2) { animation-delay: .1s; }
+    .article-card:nth-child(3) { animation-delay: .15s; }
+    .article-card:nth-child(4) { animation-delay: .2s; }
+    .article-card:nth-child(5) { animation-delay: .25s; }
+    .article-card:nth-child(6) { animation-delay: .3s; }
+    .sidebar-widget:nth-child(1) { animation-delay: .08s; }
+    .sidebar-widget:nth-child(2) { animation-delay: .14s; }
+    .sidebar-widget:nth-child(3) { animation-delay: .2s; }
+    .sidebar-widget:nth-child(4) { animation-delay: .26s; }
+    .sidebar-widget:nth-child(5) { animation-delay: .32s; }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .no-results svg { margin: 0 auto 1rem; display: block; opacity: .35; }
+  </style>
 </head>
 <body>
 
-    <!-- ═══════════════════════════════════════
+<!-- ═══════════════════════════════════════
      HEADER
 ═══════════════════════════════════════ -->
 <header class="sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
 
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b; text-decoration:none;">
+    <a href="index.html" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b; text-decoration:none;">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
       AqGoEs -DeV
     </a>
@@ -58,22 +505,21 @@
     <nav class="hidden md:flex items-center gap-6">
       <a href="index.html">Home</a>
       <a href="sobre.html">Sobre</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html" class="active">Blog</a>
       <a href="contato.html">Contato</a>
     </nav>
 
     <!-- Direita: toggle + assine + hamburguer -->
     <div class="flex items-center gap-3">
-      <!-- Theme toggle -->
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
         <span class="knob"></span>
       </button>
-      <!-- Assine só desktop -->
       <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">
         Assine
       </a>
-      <!-- Hamburguer só mobile -->
-      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5 transition-colors" style="background:var(--bg); border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5 transition-colors"
+        style="background:var(--bg); border:1px solid var(--border);"
+        onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
         <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
@@ -81,28 +527,361 @@
     </div>
   </div>
 
-  <!-- ── DRAWER MOBILE ── -->
+  <!-- DRAWER MOBILE -->
   <div id="mobile-menu"
-       style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
-     <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="sobre.html" class="mobile-nav-link">Sobre</a>
-      <a href="blog.html" class="mobile-nav-link">Artigos</a>
-      <a href="contato.html" class="mobile-nav-link">Contato</a>
-      <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
-      <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">
-        Assine grátis
-      </a>
-    </nav>
+     style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
+   <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="sobre.html" class="mobile-nav-link">Sobre</a>
+    <a href="blog.html" class="mobile-nav-link">Artigos</a>
+    <a href="contato.html" class="mobile-nav-link">Contato</a>
+    <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
+    <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">
+      Assine grátis
+    </a>
+  </nav>
   </div>
 </header>
 
+<!-- ═══════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════ -->
+<main>
+  <div class="page-wrap">
 
-<br><br><br>
+    <!-- ── CONTENT AREA ── -->
+    <section>
 
+      <!-- Page Hero -->
+      <div class="page-hero reveal">
+        <div class="page-hero-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect width="12" height="12" rx="2" fill="#c8392b"/><path d="M3 3h2.5l1.5 3-1.5 3H3l1.5-3L3 3zm3.5 0H9L7.5 6 9 9H6.5L5 6l1.5-3z" fill="#fff"/></svg>
+          Publicações
+        </div>
+        <h1>Artigos & Tutoriais</h1>
+        <p>Conteúdo técnico sobre desenvolvimento web, Python, Django, JavaScript e mais. Aprenda com exemplos reais e projetos práticos.</p>
+      </div>
 
+      <!-- Filter Bar -->
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" onclick="filterCat(event, 'todos')">Todos</button>
+        <button class="filter-btn" onclick="filterCat(event, 'tecnologia')">Tecnologia</button>
+        <button class="filter-btn" onclick="filterCat(event, 'python')">Python</button>
+        <button class="filter-btn" onclick="filterCat(event, 'front-end')">Front-end</button>
+        <button class="filter-btn" onclick="filterCat(event, 'css')">CSS & Design</button>
+        <button class="filter-btn" onclick="filterCat(event, 'javascript')">JavaScript</button>
+        <button class="filter-btn" onclick="filterCat(event, 'django')">Django</button>
+      </div>
 
+      <!-- Featured Article -->
+      <div class="featured-card reveal" data-cat="javascript">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&q=70" alt="Artigo em destaque"/>
+        <div class="featured-card-body">
+          <div class="featured-badge">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1l1.2 2.4L9 3.8 7 5.7l.5 2.8L5 7.2 2.5 8.5 3 5.7 1 3.8l2.8-.4L5 1z" fill="#fff"/></svg>
+            Destaque
+          </div>
+          <h2><a href="#">Dominando o Event Loop no JavaScript: guia completo para 2026</a></h2>
+          <p>Entenda como o motor V8 processa tarefas, microtasks e macrotasks — e escreva código assíncrono sem bugs invisíveis.</p>
+          <div class="article-meta">
+            <span>Gabriel Ribeiro</span>
+            <span class="sep">·</span>
+            <span>28 Mar 2026</span>
+            <span class="sep">·</span>
+            <span>8 min de leitura</span>
+          </div>
+          <a href="#" class="read-more">
+            Ler artigo
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="#c8392b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
 
+      <!-- Articles Grid -->
+      <div class="articles-grid" id="articles-grid">
+
+        <!-- Card 1 -->
+        <article class="article-card reveal" data-cat="python" data-tags="python,dados,pandas">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=60" alt="Pandas na prática"/>
+          <div class="article-card-body">
+            <span class="cat-tag python">Python</span>
+            <h3><a href="#">Pandas na prática: análise de dados do zero ao dashboard</a></h3>
+            <p>Aprenda a carregar, limpar e visualizar datasets com Pandas e Matplotlib em menos de 1 hora.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>17 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                6 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="article-card reveal" data-cat="css" data-tags="css,tailwind,animacao">
+          <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=600&q=60" alt="Tailwind CSS v4"/>
+          <div class="article-card-body">
+            <span class="cat-tag css">CSS & Design</span>
+            <h3><a href="#">Tailwind CSS v4: o que mudou e como migrar seu projeto</a></h3>
+            <p>Nova engine JIT, variáveis CSS nativas e a morte do tailwind.config.js — um guia completo de migração.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>20 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                7 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="article-card reveal" data-cat="django" data-tags="django,backend,python">
+          <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600&q=60" alt="Django REST Framework"/>
+          <div class="article-card-body">
+            <span class="cat-tag django">Django</span>
+            <h3><a href="#">REST API com Django REST Framework do início ao deploy</a></h3>
+            <p>Crie uma API completa com autenticação JWT, paginação e documentação automática com Swagger.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>24 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                12 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="article-card reveal" data-cat="front-end" data-tags="html,css,acessibilidade">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=60" alt="HTML Semântico"/>
+          <div class="article-card-body">
+            <span class="cat-tag" style="background:#fce7f3;color:#be185d;border-color:#f9a8d4;">Front-end</span>
+            <h3><a href="#">HTML semântico e acessibilidade: o guia que ninguém te ensinou</a></h3>
+            <p>Tags corretas, roles ARIA e navegação por teclado — porque código acessível é código profissional.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>15 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                5 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="article-card reveal" data-cat="python" data-tags="python,async,backend">
+          <img src="https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=600&q=60" alt="Python Async"/>
+          <div class="article-card-body">
+            <span class="cat-tag python">Python</span>
+            <h3><a href="#">Python assíncrono com asyncio: concorrência sem threads</a></h3>
+            <p>Como usar async/await para processar centenas de requisições simultâneas com baixo consumo de memória.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>10 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                9 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="article-card reveal" data-cat="tecnologia" data-tags="ia,tecnologia">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=60" alt="IA no desenvolvimento"/>
+          <div class="article-card-body">
+            <span class="cat-tag tech">Tecnologia</span>
+            <h3><a href="#">IA no desenvolvimento: como usar LLMs sem perder o controle do código</a></h3>
+            <p>Estratégias para integrar ferramentas de IA ao fluxo de trabalho sem comprometer qualidade ou segurança.</p>
+            <div class="card-footer">
+              <div class="article-meta">
+                <span>5 Mar 2026</span>
+              </div>
+              <div class="reading-time">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/><path d="M6 3.5V6l1.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                11 min
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /articles-grid -->
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <a href="#" class="page-btn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="page-btn active">1</a>
+        <a href="#" class="page-btn">2</a>
+        <a href="#" class="page-btn">3</a>
+        <span class="page-btn" style="border:none;background:none;pointer-events:none;">…</span>
+        <a href="#" class="page-btn">8</a>
+        <a href="#" class="page-btn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+    </section>
+    <!-- /content area -->
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar">
+
+      <!-- Widget: Busca -->
+      <div class="sidebar-widget reveal">
+        <div class="widget-header">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#c8392b" stroke-width="1.5"/><path d="M10 10l3 3" stroke="#c8392b" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="widget-title">Buscar</span>
+        </div>
+        <div class="widget-body">
+          <div class="search-wrap">
+            <input type="text" class="search-input" id="search-input" placeholder="Pesquisar artigos…" oninput="handleSearch(this.value)" autocomplete="off"/>
+            <svg class="search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="search-results" id="search-results"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Categorias -->
+      <div class="sidebar-widget reveal">
+        <div class="widget-header">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="5" height="5" rx="1.5" fill="#c8392b"/><rect x="9" y="1" width="5" height="5" rx="1.5" fill="#c8392b" opacity=".5"/><rect x="1" y="9" width="5" height="5" rx="1.5" fill="#c8392b" opacity=".5"/><rect x="9" y="9" width="5" height="5" rx="1.5" fill="#c8392b"/></svg>
+          <span class="widget-title">Categorias</span>
+        </div>
+        <div class="widget-body" style="padding-top:.6rem;padding-bottom:.6rem;">
+          <div class="cat-list">
+            <a href="#" class="cat-list-item active-cat" onclick="sidebarCat(event,'todos')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#c8392b;"></span>Todos os posts</span>
+              <span class="cat-count">12</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'tecnologia')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#7c3aed;"></span>Tecnologia</span>
+              <span class="cat-count">3</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'python')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#3776ab;"></span>Python</span>
+              <span class="cat-count">4</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'front-end')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#be185d;"></span>Front-end</span>
+              <span class="cat-count">2</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'css')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#0891b2;"></span>CSS & Design</span>
+              <span class="cat-count">3</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'javascript')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#b8a82a;"></span>JavaScript</span>
+              <span class="cat-count">2</span>
+            </a>
+            <a href="#" class="cat-list-item" onclick="sidebarCat(event,'django')">
+              <span style="display:flex;align-items:center;"><span class="cat-dot" style="background:#44b78b;"></span>Django</span>
+              <span class="cat-count">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Tags -->
+      <div class="sidebar-widget reveal">
+        <div class="widget-header">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M1 7.5L7.5 1H14v6.5l-6.5 6.5L1 7.5z" stroke="#c8392b" stroke-width="1.3" stroke-linejoin="round"/><circle cx="11" cy="4" r="1.2" fill="#c8392b"/></svg>
+          <span class="widget-title">Tags</span>
+        </div>
+        <div class="widget-body">
+          <div class="tags-wrap" id="tags-wrap">
+            <a href="#" class="tag-pill" onclick="filterTag(event,'python')">python</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'django')">django</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'javascript')">javascript</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'css')">css</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'tailwind')">tailwind</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'html')">html</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'backend')">backend</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'deploy')">deploy</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'async')">async</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'pandas')">pandas</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'animacao')">animação</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'ia')">ia</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'acessibilidade')">acessibilidade</a>
+            <a href="#" class="tag-pill" onclick="filterTag(event,'dados')">dados</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Posts Recentes -->
+      <div class="sidebar-widget reveal">
+        <div class="widget-header">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="1" width="13" height="13" rx="2" stroke="#c8392b" stroke-width="1.3"/><path d="M4 5h7M4 8h5M4 11h4" stroke="#c8392b" stroke-width="1.3" stroke-linecap="round"/></svg>
+          <span class="widget-title">Posts Recentes</span>
+        </div>
+        <div class="widget-body" style="padding-top:.5rem;padding-bottom:.5rem;">
+
+          <div class="recent-item">
+            <div class="recent-thumb"><img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=120&q=60" alt="r1"/></div>
+            <div>
+              <a href="#" class="recent-title">Dominando o Event Loop no JavaScript</a>
+              <div class="recent-date">28 Mar 2026</div>
+            </div>
+          </div>
+
+          <div class="recent-item">
+            <div class="recent-thumb"><img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=120&q=60" alt="r2"/></div>
+            <div>
+              <a href="#" class="recent-title">REST API com Django REST Framework</a>
+              <div class="recent-date">24 Mar 2026</div>
+            </div>
+          </div>
+
+          <div class="recent-item">
+            <div class="recent-thumb"><img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=120&q=60" alt="r3"/></div>
+            <div>
+              <a href="#" class="recent-title">Tailwind CSS v4: guia de migração</a>
+              <div class="recent-date">20 Mar 2026</div>
+            </div>
+          </div>
+
+          <div class="recent-item">
+            <div class="recent-thumb"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=120&q=60" alt="r4"/></div>
+            <div>
+              <a href="#" class="recent-title">Pandas na prática: análise de dados</a>
+              <div class="recent-date">17 Mar 2026</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Widget: Newsletter -->
+      <div class="sidebar-widget reveal" style="background:#c8392b;border-color:#c8392b;">
+        <div style="padding:1.4rem 1.3rem;">
+          <div style="font-size:1.4rem;margin-bottom:.5rem;">📬</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:.4rem;">Receba novos artigos</h3>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.75);margin-bottom:1rem;line-height:1.5;">Sem spam. Apenas conteúdo técnico de qualidade toda semana.</p>
+          <input type="email" placeholder="seu@email.com" style="width:100%;padding:.6rem .85rem;border-radius:6px;border:none;font-size:.82rem;outline:none;margin-bottom:.6rem;font-family:'DM Sans',sans-serif;"/>
+          <button style="width:100%;padding:.6rem;border-radius:6px;background:#fff;color:#c8392b;font-size:.82rem;font-weight:700;border:none;cursor:pointer;transition:opacity .2s;" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+            Assinar newsletter
+          </button>
+        </div>
+      </div>
+
+    </aside><!-- /sidebar -->
+
+  </div><!-- /page-wrap -->
+</main>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
 <footer>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
@@ -151,4 +930,123 @@
 <!-- ═══════════════════════════════════════
      SCRIPTS
 ═══════════════════════════════════════ -->
-<script src="js/script.js"></script>
+<script>
+  /* ── Theme ── */
+  function toggleTheme() {
+    document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.classList.replace('light', 'dark');
+    }
+  })();
+
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('menu-btn');
+    const isOpen = menu.style.maxHeight !== '0px' && menu.style.maxHeight !== '';
+    menu.style.maxHeight = isOpen ? '0px' : '400px';
+    btn.setAttribute('aria-expanded', !isOpen);
+  }
+
+  /* ── Search ── */
+  const articles = [
+    { title: 'Dominando o Event Loop no JavaScript', cat: 'javascript', date: '28 Mar 2026' },
+    { title: 'Pandas na prática: análise de dados', cat: 'python', date: '17 Mar 2026' },
+    { title: 'Tailwind CSS v4: guia de migração', cat: 'css', date: '20 Mar 2026' },
+    { title: 'REST API com Django REST Framework', cat: 'django', date: '24 Mar 2026' },
+    { title: 'HTML semântico e acessibilidade', cat: 'front-end', date: '15 Mar 2026' },
+    { title: 'Python assíncrono com asyncio', cat: 'python', date: '10 Mar 2026' },
+    { title: 'IA no desenvolvimento com LLMs', cat: 'tecnologia', date: '5 Mar 2026' },
+  ];
+
+  function handleSearch(val) {
+    const box = document.getElementById('search-results');
+    if (!val || val.length < 2) { box.classList.remove('open'); return; }
+    const q = val.toLowerCase();
+    const hits = articles.filter(a => a.title.toLowerCase().includes(q));
+    if (!hits.length) {
+      box.innerHTML = '<div class="search-result-item" style="color:var(--muted)">Nenhum resultado encontrado.</div>';
+    } else {
+      box.innerHTML = hits.map(a =>
+        `<div class="search-result-item" onclick="document.getElementById('search-input').value='';document.getElementById('search-results').classList.remove('open');">
+          <strong style="font-size:.78rem;">${a.title}</strong>
+          <div style="font-size:.7rem;color:var(--muted);margin-top:.15rem;">${a.cat} · ${a.date}</div>
+        </div>`
+      ).join('');
+    }
+    box.classList.add('open');
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrap')) {
+      document.getElementById('search-results').classList.remove('open');
+    }
+  });
+
+  /* ── Category filter (sidebar) ── */
+  function sidebarCat(e, cat) {
+    e.preventDefault();
+    // sync with filter bar
+    filterCat(null, cat);
+    // update sidebar active
+    document.querySelectorAll('.cat-list-item').forEach(el => el.classList.remove('active-cat'));
+    e.currentTarget.classList.add('active-cat');
+  }
+
+  /* ── Category filter (filter bar) ── */
+  function filterCat(e, cat) {
+    if (e) e.preventDefault();
+    const cards = document.querySelectorAll('#articles-grid .article-card');
+    const featured = document.querySelector('.featured-card');
+
+    // update filter bar buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase().includes(cat) || cat === 'todos');
+      if (cat === 'todos') { document.querySelector('.filter-btn').classList.add('active'); }
+    });
+
+    // filter cards
+    cards.forEach(card => {
+      const cardCat = card.dataset.cat;
+      const show = cat === 'todos' || cardCat === cat;
+      card.style.display = show ? '' : 'none';
+    });
+
+    // featured
+    if (featured) {
+      const featCat = featured.dataset.cat;
+      featured.style.display = (cat === 'todos' || featCat === cat) ? '' : 'none';
+    }
+
+    // sync sidebar
+    document.querySelectorAll('.cat-list-item').forEach(el => {
+      const elCat = el.getAttribute('onclick')?.match(/'([^']+)'\)$/)?.[1];
+      el.classList.toggle('active-cat', elCat === cat);
+    });
+  }
+
+  /* ── Tag filter ── */
+  function filterTag(e, tag) {
+    e.preventDefault();
+    const cards = document.querySelectorAll('#articles-grid .article-card');
+    document.querySelectorAll('.tag-pill').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || '').split(',');
+      card.style.display = tags.includes(tag) ? '' : 'none';
+    });
+
+    // reset filter bar
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.filter-btn').classList.add('active');
+  }
+</script>
+
+</body>
+</html>

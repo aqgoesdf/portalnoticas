@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nexus · Notícias que Importam</title>
+  <title>Sobre Nós · Nexus / AqGoEs</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css">
@@ -37,117 +37,153 @@
       }
     }
   </script>
-
-
 </head>
-<body>
+<body class="font-body transition-colors duration-300" style="background: var(--bg); color: var(--text);">
 
-    <!-- ═══════════════════════════════════════
-     HEADER
-═══════════════════════════════════════ -->
-<header class="sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
-    <!-- Logo -->
-    <a href="#" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b; text-decoration:none;">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
-      AqGoEs
-    </a>
-
-    <!-- Nav desktop -->
-    <nav class="hidden md:flex items-center gap-6">
-      <a href="index.html">Home</a>
-      <a href="sobre.html">Sobre</a>
-      <a href="blog.html">Blog</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-
-    <!-- Direita: toggle + assine + hamburguer -->
-    <div class="flex items-center gap-3">
-      <!-- Theme toggle -->
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
-        <span class="knob"></span>
-      </button>
-      <!-- Assine só desktop -->
-      <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">
-        Assine
+  <header class="sticky top-0 z-50" style="background: var(--surface); border-bottom: 1px solid var(--border);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2 font-display font-black text-2xl tracking-tight" style="color:#c8392b; text-decoration:none;">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect width="22" height="22" rx="4" fill="#c8392b"/><path d="M5 5h5l3 6-3 6H5l3-6-3-6zm7 0h5l-3 6 3 6h-5l-3-6 3-6z" fill="#fff"/></svg>
+        AqGoEs
       </a>
-      <!-- Hamburguer só mobile -->
-      <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5 transition-colors" style="background:var(--bg); border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
-        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
-        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
-        <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
-      </button>
+
+      <nav class="hidden md:flex items-center gap-6 font-medium text-sm" style="color: var(--text);">
+        <a href="index.html" class="hover:text-[var(--accent)] transition-colors">Home</a>
+        <a href="sobre.html" class="text-[#c8392b] font-semibold">Sobre</a>
+        <a href="blog.html" class="hover:text-[var(--accent)] transition-colors">Blog</a>
+        <a href="contato.html" class="hover:text-[var(--accent)] transition-colors">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+          <span class="knob"></span>
+        </button>
+        <a href="#" class="hidden md:inline-flex items-center px-4 py-2 rounded-md text-sm font-semibold text-white" style="background:#c8392b;">
+          Assine
+        </a>
+        <button id="menu-btn" class="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-md gap-1.5 transition-colors" style="background:var(--bg); border:1px solid var(--border);" onclick="toggleMenu()" aria-label="Abrir menu" aria-expanded="false">
+          <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+          <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+          <span class="ham-bar" style="display:block;width:18px;height:2px;background:var(--text);border-radius:2px;transition:transform .3s,opacity .3s;"></span>
+        </button>
+      </div>
     </div>
-  </div>
 
-  <!-- ── DRAWER MOBILE ── -->
-  <div id="mobile-menu"
-       style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
-     <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-      <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="sobre.html" class="mobile-nav-link">Sobre</a>
-      <a href="blog.html" class="mobile-nav-link">Artigos</a>
-      <a href="contato.html" class="mobile-nav-link">Contato</a>
-      <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
-      <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">
-        Assine grátis
-      </a>
-    </nav>
-  </div>
-</header>
+    <div id="mobile-menu" style="max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1);background:var(--surface);border-top:1px solid var(--border);">
+       <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
+        <a href="index.html" class="mobile-nav-link py-2" style="color: var(--text);">Home</a>
+        <a href="sobre.html" class="mobile-nav-link py-2 font-bold" style="color: #c8392b;">Sobre</a>
+        <a href="blog.html" class="mobile-nav-link py-2" style="color: var(--text);">Artigos</a>
+        <a href="contato.html" class="mobile-nav-link py-2" style="color: var(--text);">Contato</a>
+        <div style="border-top:1px solid var(--border);margin:.5rem 0;"></div>
+        <a href="#" class="inline-flex justify-center items-center px-4 py-2.5 rounded-md text-sm font-bold text-white" style="background:#c8392b;">
+          Assine grátis
+        </a>
+      </nav>
+    </div>
+  </header>
 
+  <main class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <section class="text-center mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest block mb-3 text-[#d4a845]">Quem Somos</span>
+        <h1 class="font-display font-black text-4xl md:text-6xl tracking-tight mb-6" style="color: var(--text);">
+          Jornalismo independente, <br>compromisso com a verdade.
+        </h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" style="color: var(--muted);">
+          No AqGoEs, acreditamos que a informação de qualidade é o pilar de uma sociedade livre e consciente. Conectamos você aos fatos que realmente importam.
+        </p>
+      </section>
 
-<br><br><br>
+      <section class="grid md:grid-cols-12 gap-8 items-start mb-20">
+        <div class="md:col-span-5">
+          <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight" style="color: var(--text);">
+            Nossa Missão e Trajetória
+          </h2>
+          <div class="w-12 h-1 bg-[#c8392b] mt-4"></div>
+        </div>
+        <div class="md:col-span-7 space-y-6 text-sm md:text-base leading-relaxed" style="color: var(--muted);">
+          <p>
+            Fundado com o objetivo de romper com os oligopólios de mídia tradicionais, o <strong>AqGoEs (Nexus Jornalismo)</strong> nasceu da necessidade de uma cobertura analítica, profunda e, acima de tudo, ética.
+          </p>
+          <p>
+            Não cobrimos apenas o factual imediato; buscamos as causas, os impactos a longo prazo e as conexões globais por trás de cada acontecimento econômico, político e tecnológico. Nosso compromisso é com o leitor.
+          </p>
+        </div>
+      </section>
 
+      <section class="border-t border-b py-12 my-16 grid grid-cols-1 sm:grid-cols-3 gap-8" style="border-color: var(--border);">
+        <div>
+          <div class="font-display font-bold text-xl mb-2 text-[#c8392b]">01. Independência</div>
+          <p class="text-xs md:text-sm leading-relaxed" style="color: var(--muted);">Não possuímos amarras com grupos políticos ou corporações. Nossa linha editorial é guiada estritamente pelos fatos.</p>
+        </div>
+        <div>
+          <div class="font-display font-bold text-xl mb-2 text-[#c8392b]">02. Profundidade</div>
+          <p class="text-xs md:text-sm leading-relaxed" style="color: var(--muted);">Fugimos do clickbait. Investigamos a fundo para entregar reportagens que geram valor intelectual real para nossos assinantes.</p>
+        </div>
+        <div>
+          <div class="font-display font-bold text-xl mb-2 text-[#c8392b]">03. Transparência</div>
+          <p class="text-xs md:text-sm leading-relaxed" style="color: var(--muted);">Erramos e corrigimos publicamente. Mantemos nossos processos editoriais abertos e claros para nossa comunidade.</p>
+        </div>
+      </section>
 
+      <section class="bg-gradient-to-br from-ink-50 to-ink-100 dark:from-ink-900 dark:to-ink-950 p-8 md:p-12 rounded-xl text-center border" style="border-color: var(--border);">
+        <h3 class="font-display font-black text-2xl md:text-3xl mb-4" style="color: var(--text);">Apoie o jornalismo que faz a diferença</h3>
+        <p class="text-sm max-w-xl mx-auto mb-6" style="color: var(--muted);">A nossa equipe está na rua e nas bases de dados investigando o que impacta o seu bolso e o seu futuro. Faça parte do nosso clube de assinantes.</p>
+        <a href="#" class="inline-flex items-center px-6 py-3 rounded-md text-sm font-bold text-white shadow-md hover:opacity-90 transition-opacity" style="background:#c8392b;">
+          Conhecer Planos de Assinatura
+        </a>
+      </section>
 
+    </div>
+  </main>
 
-<footer>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-      <div>
-        <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">AqGoEs</div>
-        <p class="text-xs leading-relaxed" style="color:var(--muted)">Jornalismo independente que conecta você ao mundo que importa.</p>
+  <footer style="background: var(--surface); border-top: 1px solid var(--border);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="font-display font-black text-xl mb-3" style="color:#c8392b;">AqGoEs</div>
+          <p class="text-xs leading-relaxed" style="color:var(--muted)">Jornalismo independente que conecta você ao mundo que importa.</p>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Editorias</h5>
+          <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
+            <li><a href="#" style="color:inherit;text-decoration:none;">Brasil</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none;">Mundo</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none;">Tecnologia</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none;">Economia</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Empresa</h5>
+          <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
+            <li><a href="sobre.html" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none;">Redação</a></li>
+            <li><a href="#" style="color:inherit;text-decoration:none;">Anuncie</a></li>
+            <li><a href="contato.html" style="color:inherit;text-decoration:none;">Contato</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Newsletter</h5>
+          <p class="text-xs mb-3" style="color:var(--muted);">Receba as melhores notícias no seu e-mail.</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);" />
+            <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
+          </div>
+        </div>
       </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Editorias</h5>
-        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
-          <li><a href="#" style="color:inherit;text-decoration:none;">Brasil</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Mundo</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Tecnologia</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Economia</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Empresa</h5>
-        <ul class="space-y-1.5 text-xs" style="color:var(--muted);">
-          <li><a href="#" style="color:inherit;text-decoration:none;">Sobre nós</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Redação</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Anuncie</a></li>
-          <li><a href="#" style="color:inherit;text-decoration:none;">Contato</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="font-semibold text-sm mb-3" style="color:var(--text);">Newsletter</h5>
-        <p class="text-xs mb-3" style="color:var(--muted);">Receba as melhores notícias no seu e-mail.</p>
-        <div class="flex gap-2">
-          <input type="email" placeholder="seu@email.com" class="flex-1 text-xs px-3 py-2 rounded-md outline-none" style="background:var(--bg);border:1px solid var(--border);color:var(--text);" />
-          <button class="px-3 py-2 rounded-md text-xs font-bold text-white" style="background:#c8392b;">OK</button>
+      <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-2" style="border-color:var(--border);">
+        <p class="text-xs" style="color:var(--muted);">© 2026 NEXUS Jornalismo. Todos os direitos reservados.</p>
+        <div class="flex gap-4 text-xs" style="color:var(--muted);">
+          <a href="#" style="color:inherit;text-decoration:none;">Privacidade</a>
+          <a href="#" style="color:inherit;text-decoration:none;">Termos</a>
+          <a href="#" style="color:inherit;text-decoration:none;">Cookies</a>
         </div>
       </div>
     </div>
-    <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between gap-2" style="border-color:var(--border);">
-      <p class="text-xs" style="color:var(--muted);">© 2026 NEXUS Jornalismo. Todos os direitos reservados.</p>
-      <div class="flex gap-4 text-xs" style="color:var(--muted);">
-        <a href="#" style="color:inherit;text-decoration:none;">Privacidade</a>
-        <a href="#" style="color:inherit;text-decoration:none;">Termos</a>
-        <a href="#" style="color:inherit;text-decoration:none;">Cookies</a>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<!-- ═══════════════════════════════════════
-     SCRIPTS
-═══════════════════════════════════════ -->
-<script src="js/script.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
