@@ -3,6 +3,9 @@ function aqgoes_theme_setup() {
     // Suporte ao título dinâmico
     add_theme_support('title-tag');
 
+    // ATIVA AS IMAGENS DESTACADAS NOS POSTS
+    add_theme_support('post-thumbnails');
+
     // Registra os locais dos menus para aparecerem no Painel do WP
     register_nav_menus(array(
         'primary-menu' => __('Menu Desktop', 'aqgoes'),
