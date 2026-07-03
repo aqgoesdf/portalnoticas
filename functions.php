@@ -10,6 +10,8 @@ function aqgoes_theme_setup() {
     register_nav_menus(array(
         'primary-menu' => __('Menu Desktop', 'aqgoes'),
         'mobile-menu'  => __('Menu Mobile', 'aqgoes'),
+        'footer-editorias' => __('Footer — Editorias (Categorias)', 'aqgoes'),
+        'footer-empresa'   => __('Footer — Empresa (Páginas)', 'aqgoes'),
     ));
 }
 add_action('after_setup_theme', 'aqgoes_theme_setup');

@@ -108,8 +108,6 @@
 </section>
 
 
-
-
 <!-- ═══════════════════════════════════════
      SEÇÃO 2 — 4 CARDS DE NOTÍCIAS (DINÂMICO)
 ═══════════════════════════════════════ -->
@@ -214,6 +212,35 @@
     <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="read-more text-sm">Ver todas as notícias →</a>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════
+     SEÇÃO 3 — CHAMADA PARA AÇÃO (DINÂMICO)
+═══════════════════════════════════════ -->
+<section class="cta-section my-8 py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center relative z-10">
+    <span class="inline-block text-xs tracking-widest uppercase font-bold text-white/60 mb-3">
+      Nosso Blog
+    </span>
+    
+    <h2 class="font-display text-3xl md:text-5xl font-black text-white leading-tight mb-4">
+      Análises profundas,<br class="hidden sm:block"/> sem pressa e sem ruído
+    </h2>
+    
+    <p class="text-white/75 text-base md:text-lg mb-8 max-w-xl mx-auto">
+      No blog AqGoEs, nossos editores e colunistas vão além das manchetes. Leituras que informam, provocam e inspiram.
+    </p>
+    
+    <!-- Link dinâmico apontando para a listagem principal do blog -->
+    <a href="<?php echo esc_url(get_post_type_archive_link('post') ? get_post_type_archive_link('post') : home_url('/')); ?>" class="cta-btn text-base">
+      Explorar o Blog &rarr;
+    </a>
+    
+    <p class="text-white/45 text-xs mt-5">Sem cadastro. Totalmente gratuito.</p>
+  </div>
+</section>
+
+
 </main>
 
 <?php get_footer(); ?>
