@@ -1,8 +1,16 @@
 /*
-Theme Name: Meu Tema de Blog
-Theme URI: http://seu-site-local.local
-Author: Seu Nome
-Description: Tema customizado criado a partir de um modelo HTML/CSS/JS.
-Version: 1.0
+Theme Name: aqgoes Theme
+Theme URI: https://aqgoes.com/blog
+Author: AQGoes
+Author URI: https://aqgoes.com
+Description: Tema personalizado desenvolvido do zero (sem page builders) para o blog aqgoes.com.
+Version: 1.0.0
+Text Domain: aqgoes-theme
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
+/* 
+ * Nota: Os estilos da interface principal estão carregados dinamicamente 
+ * via assets/css/customer.css através da API wp_enqueue_style no functions.php
+ */
