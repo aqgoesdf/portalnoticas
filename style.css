@@ -1,17 +1,14 @@
 /*
-Theme Name: AqGoEs
+Theme Name: aqgoes Theme
 Theme URI: https://aqgoes.com
-Author: AqGoEs-DeV
+Author: aqgoes
 Author URI: https://aqgoes.com
-Description: Tema WordPress custom-built (sem page builder, sem tema pai) para o portfolio + blog AqGoEs-DeV. Front-end estático convertido em tema clássico PHP, com Tailwind via CDN, dark/light mode com localStorage e nav walker próprio.
+Description: Tema WordPress personalizado e sob medida para o blog aqgoes.com, desenvolvido sem page builders.
 Version: 1.0.0
-Requires at least: 6.0
-Requires PHP: 7.4
-License: GNU General Public License v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: aqgoes
 */
 
-/* Este arquivo existe apenas para o WordPress reconhecer o tema.
-   Todo o CSS "de verdade" fica em assets/css/main.css (enfileirado via functions.php),
-   seguindo o mesmo padrão já usado no restante do tema. */
+/* 
+  Observação: O seu CSS principal ficará no arquivo assets/css/main.css, 
+  que será carregado dinamicamente via functions.php.
+*/
