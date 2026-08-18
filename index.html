@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AqGoES Dev | Tecnologia</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            title: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Style Customizado -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-primary text-primary font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col">
+
+  <!-- HEADER FIXO -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-header border-b border-subtle backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="index.html" class="font-title font-extrabold text-2xl tracking-tight text-accent flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-brand inline-block"></span>
+        AqGoEs DeV<span class="text-brand">.</span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-medium hover:text-brand transition-colors">Home</a>
+        <a href="sobre.html" class="text-sm font-medium hover:text-brand transition-colors">Sobre</a>
+        <a href="artigo.html" class="text-sm font-medium hover:text-brand transition-colors">Artigos</a>
+        <a href="#newsletter" class="text-sm font-medium hover:text-brand transition-colors">Contato</a>
+      </nav>
+
+      <!-- Botão Dark/Light + Menu Mobile -->
+      <div class="flex items-center gap-4">
+        <!-- Toggle Theme Button -->
+        <button id="theme-toggle" aria-label="Alternar tema" class="p-2.5 rounded-full border border-subtle bg-secondary hover:bg-subtle transition-all duration-300 text-primary">
+          <!-- Ícone Sol (Light) -->
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Ícone Lua (Dark) -->
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Botão Menu Hambúrguer (Mobile) -->
+        <button id="menu-toggle" aria-label="Abrir menu" class="md:hidden p-2.5 rounded-xl border border-subtle bg-secondary text-primary">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-subtle bg-secondary px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="block text-base font-medium hover:text-brand py-2">Home</a>
+      <a href="sobre.html" class="block text-base font-medium hover:text-brand py-2">Sobre</a>
+      <a href="artigo.html" class="block text-base font-medium hover:text-brand py-2">Artigos</a>
+      <a href="contato.html" class="block text-base font-medium hover:text-brand py-2">Contato</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="flex-grow pt-28">
+
+    <!-- HERO SECTION / DESTAQUES (1 Maior + 3 Menores) -->
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="font-title text-2xl sm:text-3xl font-extrabold tracking-tight">Em Destaque</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Post Principal (Destaque Grande - 7 cols) -->
+        <article class="lg:col-span-7 group rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+          <div class="aspect-video w-full overflow-hidden bg-subtle">
+            <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1200&q=80" alt="Código e Design System" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-3 text-xs font-semibold text-brand mb-3">
+                <span class="uppercase tracking-wider">Arquitetura Front-End</span>
+                <span>•</span>
+                <span class="text-muted">5 min de leitura</span>
+              </div>
+              <h3 class="font-title text-2xl sm:text-3xl font-bold mb-4 group-hover:text-brand transition-colors">
+                O Futuro da Renderização na Web: Server Components e Micro-Frontends
+              </h3>
+              <p class="text-muted text-sm sm:text-base mb-6 line-clamp-3">
+                Entenda como as novas abordagens de renderização estão transformando a performance e a escalabilidade de aplicações web modernas.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-subtle">
+              <div class="w-9 h-9 rounded-full bg-brand/20 text-brand font-bold flex items-center justify-center text-sm">JS</div>
+              <div>
+                <p class="text-xs font-semibold">Juliana Silva</p>
+                <p class="text-xs text-muted">12 de Agosto, 2026</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Lista de 3 Posts Secundários (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          
+          <!-- Post Menor 1 -->
+          <article class="group rounded-2xl border border-subtle bg-secondary p-5 flex gap-4 items-center transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="CSS Grid e Flexbox" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex-grow">
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">CSS & Design</span>
+              <h4 class="font-title text-base sm:text-lg font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                Dominando CSS Subgrid na Prática com Exemplos
+              </h4>
+              <p class="text-xs text-muted mt-2">10 de Agosto, 2026</p>
+            </div>
+          </article>
+
+          <!-- Post Menor 2 -->
+          <article class="group rounded-2xl border border-subtle bg-secondary p-5 flex gap-4 items-center transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Performance Web" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex-grow">
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">Performance</span>
+              <h4 class="font-title text-base sm:text-lg font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                Como Otimizar Core Web Vitals no Seu Projeto
+              </h4>
+              <p class="text-xs text-muted mt-2">08 de Agosto, 2026</p>
+            </div>
+          </article>
+
+          <!-- Post Menor 3 -->
+          <article class="group rounded-2xl border border-subtle bg-secondary p-5 flex gap-4 items-center transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+            <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80" alt="Segurança Web" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="flex-grow">
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">Segurança</span>
+              <h4 class="font-title text-base sm:text-lg font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                Boas Práticas de Autenticação com Tokens JWT
+              </h4>
+              <p class="text-xs text-muted mt-2">05 de Agosto, 2026</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO CATEGORIAS E GRID DE ARTIGOS -->
+    <section id="categorias" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div>
+          <h2 class="font-title text-2xl sm:text-3xl font-extrabold tracking-tight">Explore por Categoria</h2>
+          <p class="text-muted text-sm mt-1">Filtre os conteúdos de acordo com o seu interesse técnico.</p>
+        </div>
+        
+        <!-- Lista / Pills de Categorias -->
+        <div class="flex flex-wrap gap-2">
+          <button class="px-4 py-2 rounded-xl text-xs font-semibold bg-brand text-white transition-all">Todos</button>
+          <button class="px-4 py-2 rounded-xl text-xs font-semibold bg-secondary border border-subtle hover:border-brand transition-all">JavaScript</button>
+          <button class="px-4 py-2 rounded-xl text-xs font-semibold bg-secondary border border-subtle hover:border-brand transition-all">UI/UX Design</button>
+          <button class="px-4 py-2 rounded-xl text-xs font-semibold bg-secondary border border-subtle hover:border-brand transition-all">Carreira</button>
+        </div>
+      </div>
+
+      <!-- Grid de 3 Colunas com Artigos -->
+      <div id="artigos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1 -->
+        <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <div class="aspect-video w-full overflow-hidden bg-subtle">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" alt="UI Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">UI/UX Design</span>
+              <h3 class="font-title text-xl font-bold mt-2 mb-3 group-hover:text-brand transition-colors">Design Systems Escaláveis com Tailwind</h3>
+              <p class="text-muted text-sm line-clamp-2">Aprenda a padronizar tokens de cor, tipografia e componentes em grandes times.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+              <span>02 de Agosto, 2026</span>
+              <span>4 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <div class="aspect-video w-full overflow-hidden bg-subtle">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Visualization" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">JavaScript</span>
+              <h3 class="font-title text-xl font-bold mt-2 mb-3 group-hover:text-brand transition-colors">Visualização de Dados Eficiente na Web</h3>
+              <p class="text-muted text-sm line-clamp-2">Criando gráficos dinâmicos e leves com SVG e Canvas nativos.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+              <span>28 de Julho, 2026</span>
+              <span>7 min</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+          <div class="aspect-video w-full overflow-hidden bg-subtle">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Code Refactoring" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-semibold text-brand uppercase tracking-wider">Carreira</span>
+              <h3 class="font-title text-xl font-bold mt-2 mb-3 group-hover:text-brand transition-colors">Como Conduzir Code Reviews Construtivos</h3>
+              <p class="text-muted text-sm line-clamp-2">Dicas práticas para aumentar a qualidade do código mantendo um ambiente saudável.</p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+              <span>21 de Julho, 2026</span>
+              <span>5 min</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Paginação Simples -->
+      <div class="mt-12 flex justify-center items-center gap-2">
+        <button class="p-2.5 rounded-xl border border-subtle bg-secondary hover:border-brand text-xs font-semibold transition-all opacity-50 cursor-not-allowed">Anterior</button>
+        <span class="px-4 py-2 text-xs font-semibold">Página 1 de 4</span>
+        <button class="p-2.5 rounded-xl border border-subtle bg-secondary hover:border-brand text-xs font-semibold transition-all">Próxima</button>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION (CTA) BANNER -->
+    <section id="newsletter" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="rounded-3xl bg-brand text-white p-8 sm:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+        <!-- Elemento Decorativo Background -->
+        <div class="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+
+        <div class="max-w-xl z-10 text-center lg:text-left">
+          <h2 class="font-title text-2xl sm:text-4xl font-extrabold tracking-tight">Receba artigos técnicos direto no seu e-mail.</h2>
+          <p class="mt-3 text-white/80 text-sm sm:text-base">Junte-se a mais de 5.000 desenvolvedores. Sem spam, apenas conteúdo prático sobre desenvolvimento Front-End e UI Design.</p>
+        </div>
+
+        <!-- Form de Inscrição -->
+        <form class="w-full lg:w-auto flex flex-col sm:flex-row gap-3 z-10" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Seu melhor e-mail" required class="px-5 py-3.5 rounded-xl text-slate-800 text-sm bg-white border-0 focus:outline-none focus:ring-2 focus:ring-white/50 w-full sm:w-80 shadow-inner" />
+          <button type="submit" class="px-6 py-3.5 rounded-xl bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800 transition-all shadow-md">Inscrever-se</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-subtle bg-secondary py-12 transition-colors duration-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-muted">
+      
+      <div class="flex items-center gap-2">
+        <span class="font-title font-bold text-base text-primary">DevBlog.</span>
+        <span>© 2026 Todos os direitos reservados.</span>
+      </div>
+
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-brand transition-colors">Portfólio</a>
+        <a href="#" class="hover:text-brand transition-colors">GitHub</a>
+        <a href="#" class="hover:text-brand transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-brand transition-colors">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

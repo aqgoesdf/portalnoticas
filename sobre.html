@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre mim | AqGoEs DeV</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            title: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Style Customizado -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-primary text-primary font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col">
+
+  <!-- HEADER FIXO -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-header border-b border-subtle backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="index.html" class="font-title font-extrabold text-2xl tracking-tight text-accent flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-brand inline-block"></span>
+        AqGoEs DeV<span class="text-brand">.</span>
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-medium hover:text-brand transition-colors">Home</a>
+        <a href="sobre.html" class="text-sm font-medium text-brand font-semibold">Sobre</a>
+        <a href="artigo.html" class="text-sm font-medium hover:text-brand transition-colors">Artigos</a>
+        <a href="index.html#newsletter" class="text-sm font-medium hover:text-brand transition-colors">Contato</a>
+      </nav>
+
+      <!-- Botão Dark/Light + Menu Mobile -->
+      <div class="flex items-center gap-4">
+        <!-- Toggle Theme Button -->
+        <button id="theme-toggle" aria-label="Alternar tema" class="p-2.5 rounded-full border border-subtle bg-secondary hover:bg-subtle transition-all duration-300 text-primary">
+          <!-- Ícone Sol (Light) -->
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Ícone Lua (Dark) -->
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Botão Menu Hambúrguer (Mobile) -->
+        <button id="menu-toggle" aria-label="Abrir menu" class="md:hidden p-2.5 rounded-xl border border-subtle bg-secondary text-primary">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-subtle bg-secondary px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="block text-base font-medium hover:text-brand py-2">Home</a>
+      <a href="sobre.html" class="block text-base font-medium text-brand py-2">Sobre</a>
+      <a href="index.html#artigos" class="block text-base font-medium hover:text-brand py-2">Artigos</a>
+      <a href="index.html#newsletter" class="block text-base font-medium hover:text-brand py-2">Newsletter</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="flex-grow pt-28">
+
+    <!-- HERO SOBRE MIM -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center sm:text-left mb-12">
+        <span class="px-3 py-1.5 rounded-full text-xs font-semibold bg-brand/10 text-brand border border-brand/20 uppercase tracking-wider">
+          Sobre Mim
+        </span>
+        <h1 class="font-title text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 mb-6">
+          Experiência & Trajetória
+        </h1>
+        <p class="text-lg sm:text-xl text-muted leading-relaxed">
+          Sólida carreira construída com suporte e análise de TI no <strong class="text-primary font-semibold">Senado Federal</strong>, unindo a resiliência operacional do suporte à paixão por engenharia de software e desenvolvimento web.
+        </p>
+      </div>
+
+      <!-- OBJETIVO DO BLOG (NOVO BLOCO SOLICITADO) -->
+      <div class="mb-12 p-6 sm:p-8 rounded-2xl border border-brand/30 bg-secondary relative overflow-hidden shadow-sm">
+        <div class="absolute top-0 left-0 w-1.5 h-full bg-brand"></div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-brand"></span>
+          <h2 class="font-title text-xl font-bold tracking-tight">Objetivo do Blog</h2>
+        </div>
+        <p class="text-muted text-sm sm:text-base leading-relaxed">
+          Este espaço foi criado com o propósito de funcionar como um <strong class="text-primary font-semibold">grande rascunho online</strong>. A ideia é documentar soluções, conceitos e aprendizados diários para que, quando eu precisar tirar uma dúvida específica no futuro, possa acessar o conhecimento rapidamente de qualquer lugar. E, no melhor dos cenários, permitir que esses mesmos registros ajudem outros desenvolvedores e entusiastas de tecnologia que encontrarem meus artigos.
+        </p>
+      </div>
+
+      <!-- CARDS DE RESUMO/TECH STACK -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+        <div class="p-5 rounded-2xl border border-subtle bg-secondary">
+          <span class="text-xs font-semibold text-brand uppercase tracking-wider block mb-1">Especialidade</span>
+          <p class="font-title font-bold text-lg">TI & Front-End</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-subtle bg-secondary">
+          <span class="text-xs font-semibold text-brand uppercase tracking-wider block mb-1">Setor Principal</span>
+          <p class="font-title font-bold text-lg">Senado Federal</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-subtle bg-secondary">
+          <span class="text-xs font-semibold text-brand uppercase tracking-wider block mb-1">Formação</span>
+          <p class="font-title font-bold text-lg">Dev Full Stack</p>
+        </div>
+      </div>
+
+      <!-- SEÇÃO TRAJETÓRIA PROFISSIONAL & FORMAÇÃO (TIMELINE) -->
+      <div class="space-y-12">
+        
+        <div class="border-b border-subtle pb-4">
+          <h2 class="font-title text-2xl font-bold tracking-tight">Trajetória Profissional</h2>
+          <p class="text-sm text-muted">Histórico de atuação e desenvolvimento técnico.</p>
+        </div>
+
+        <!-- TIMELINE CONTAINER -->
+        <div class="relative border-l-2 border-subtle ml-3 sm:ml-6 pl-6 sm:pl-8 space-y-12">
+
+          <!-- ITEM 1: Momento Atual -->
+          <div class="relative group">
+            <!-- Marcador da Timeline -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-brand ring-4 ring-primary transition-transform duration-300 group-hover:scale-125"></div>
+
+            <article class="p-6 rounded-2xl border border-subtle bg-secondary transition-all duration-300 hover:border-brand/50 hover:shadow-lg">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-brand text-white inline-block mb-2 sm:mb-0">Momento Atual</span>
+                  <h3 class="font-title text-xl font-bold">Analista Técnico Sênior (Terceirizado)</h3>
+                  <p class="text-sm font-medium text-brand">Comissões do Senado Federal</p>
+                </div>
+              </div>
+              
+              <p class="text-muted text-sm sm:text-base leading-relaxed">
+                Atuação estratégica de suporte e análise técnica diretamente nas comissões do Senado Federal, garantindo estabilidade, segurança e eficiência no fluxo tecnológico de processos legislativos críticos.
+              </p>
+            </article>
+          </div>
+
+          <!-- ITEM 2: Etapa Anterior -->
+          <div class="relative group">
+            <!-- Marcador da Timeline -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-subtle ring-4 ring-primary transition-transform duration-300 group-hover:bg-brand group-hover:scale-125"></div>
+
+            <article class="p-6 rounded-2xl border border-subtle bg-secondary transition-all duration-300 hover:border-brand/50 hover:shadow-lg">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-subtle text-primary inline-block mb-2 sm:mb-0">Etapa Anterior</span>
+                  <h3 class="font-title text-xl font-bold">Técnico Nível 1 & Nível 2 (Terceirizado)</h3>
+                  <p class="text-sm font-medium text-brand">Senado Federal</p>
+                </div>
+              </div>
+              
+              <p class="text-muted text-sm sm:text-base leading-relaxed">
+                Atuação na linha de frente do suporte de TI, solucionando incidentes complexos de infraestrutura e sistemas, além de garantir a continuidade operacional das atividades parlamentares.
+              </p>
+            </article>
+          </div>
+
+          <!-- ITEM 3: Formação & Autonomia -->
+          <div class="relative group">
+            <!-- Marcador da Timeline -->
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-subtle ring-4 ring-primary transition-transform duration-300 group-hover:bg-brand group-hover:scale-125"></div>
+
+            <article class="p-6 rounded-2xl border border-subtle bg-secondary transition-all duration-300 hover:border-brand/50 hover:shadow-lg">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div>
+                  <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-subtle text-primary inline-block mb-2 sm:mb-0">Formação & Autonomia</span>
+                  <h3 class="font-title text-xl font-bold">Estudos por Conta Própria & Ensino Superior</h3>
+                  <p class="text-sm font-medium text-brand">Graduação Full Stack</p>
+                </div>
+              </div>
+              
+              <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+                Unindo a disciplina dos estudos autodidatas com uma formação superior estruturada em Desenvolvimento Full Stack. Dedicação diária ao aprendizado prático de arquitetura de software e engenharia web.
+              </p>
+
+              <!-- BADGES DAS TECNOLOGIAS EM ESTUDO/USO -->
+              <div class="pt-4 border-t border-subtle">
+                <span class="text-xs font-semibold text-muted uppercase tracking-wider block mb-3">Tecnologias & Ferramentas</span>
+                <div class="flex flex-wrap gap-2 font-mono text-xs">
+                  <span class="px-3 py-1.5 rounded-lg border border-subtle bg-primary font-medium text-primary">Python</span>
+                  <span class="px-3 py-1.5 rounded-lg border border-subtle bg-primary font-medium text-primary">HTML5</span>
+                  <span class="px-3 py-1.5 rounded-lg border border-subtle bg-primary font-medium text-primary">CSS3 / Tailwind</span>
+                  <span class="px-3 py-1.5 rounded-lg border border-subtle bg-primary font-medium text-primary">JavaScript (ES6+)</span>
+                  <span class="px-3 py-1.5 rounded-lg border border-subtle bg-primary font-medium text-primary">WordPress</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION DE CONTATO/PORTFÓLIO -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="rounded-3xl border border-subtle bg-secondary p-8 sm:p-10 text-center flex flex-col items-center justify-center">
+        <h2 class="font-title text-2xl sm:text-3xl font-bold">Vamos trocar uma ideia?</h2>
+        <p class="text-muted text-sm sm:text-base mt-2 max-w-lg">
+          Estou sempre aberto a conversar sobre desenvolvimento web, arquitetura de TI ou novas oportunidades.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-4 justify-center">
+          <a href="mailto:contato@exemplo.com" class="px-6 py-3 rounded-xl bg-brand hover:bg-brand-hover text-white font-semibold text-sm transition-all shadow-md">
+            Entrar em Contato
+          </a>
+          <a href="index.html" class="px-6 py-3 rounded-xl border border-subtle bg-primary hover:border-brand text-primary font-semibold text-sm transition-all">
+            Voltar para o Blog
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-subtle bg-secondary py-12 transition-colors duration-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-muted">
+      
+      <div class="flex items-center gap-2">
+        <span class="font-title font-bold text-base text-primary">DevBlog.</span>
+        <span>© 2026 Todos os direitos reservados.</span>
+      </div>
+
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-brand transition-colors">Portfólio</a>
+        <a href="#" class="hover:text-brand transition-colors">GitHub</a>
+        <a href="#" class="hover:text-brand transition-colors">LinkedIn</a>
+        <a href="#" class="hover:text-brand transition-colors">Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script JS Reutilizado (gerencia menu e dark mode) -->
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

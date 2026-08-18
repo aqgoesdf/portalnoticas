@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todos os Artigos | Blog AqGoES</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2563EB',
+              hover: '#1D4ED8',
+            },
+            tech: {
+              html: '#E34F26',
+              css: '#1572B6',
+              js: '#F7DF1E',
+              python: '#3776AB',
+              wordpress: '#21759B',
+              php: '#777BB4',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            title: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Style Customizado -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-primary text-primary font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col">
+
+  <!-- HEADER FIXO (Padronizado) -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-header border-b border-subtle backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="index.html" class="font-title font-extrabold text-2xl tracking-tight flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 inline-block"></span>
+        <span class="bg-gradient-to-r from-blue-500 via-indigo-400 to-cyan-400 bg-clip-text text-transparent">AqGoEs DeV</span>.
+      </a>
+
+      <!-- Menu Desktop -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-medium hover:text-brand transition-colors">Home</a>
+        <a href="sobre.html" class="text-sm font-medium hover:text-brand transition-colors">Sobre</a>
+        <a href="artigos.html" class="text-sm font-medium text-brand font-semibold">Artigos</a>
+        <a href="index.html#newsletter" class="text-sm font-medium hover:text-brand transition-colors">Contato</a>
+      </nav>
+
+      <!-- Botão Dark/Light + Menu Mobile -->
+      <div class="flex items-center gap-4">
+        <button id="theme-toggle" aria-label="Alternar tema" class="p-2.5 rounded-full border border-subtle bg-secondary hover:bg-subtle transition-all duration-300 text-primary">
+          <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <button id="menu-toggle" aria-label="Abrir menu" class="md:hidden p-2.5 rounded-xl border border-subtle bg-secondary text-primary">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-subtle bg-secondary px-4 pt-2 pb-6 space-y-3">
+      <a href="index.html" class="block text-base font-medium hover:text-brand py-2">Home</a>
+      <a href="sobre.html" class="block text-base font-medium hover:text-brand py-2">Sobre</a>
+      <a href="artigos.html" class="block text-base font-medium text-brand py-2">Artigos</a>
+      <a href="index.html#newsletter" class="block text-base font-medium hover:text-brand py-2">Contato</a>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="flex-grow pt-28 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- TÍTULO DA PÁGINA COM GRADIENTE -->
+      <div class="mb-10 text-center sm:text-left">
+        <h1 class="font-title text-3xl sm:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-3">
+          Todos os Artigos
+        </h1>
+        <p class="text-muted text-base sm:text-lg">
+          Explore nossos tutoriais, guias e análises sobre desenvolvimento web moderno.
+        </p>
+      </div>
+
+      <!-- SEÇÃO HERO: CARROSSEL DE 3 DESTAQUES PRINCIPAIS -->
+      <section class="mb-16 relative">
+        <div class="overflow-hidden rounded-3xl border border-subtle bg-secondary shadow-2xl">
+          <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+            
+            <!-- SLIDE 1 -->
+            <article class="w-full flex-shrink-0 grid grid-cols-1 lg:grid-cols-12 items-center p-6 sm:p-10 gap-8">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="px-3 py-1 rounded-md text-xs font-semibold bg-amber-500/10 text-amber-500 border border-amber-500/20 uppercase tracking-wider font-mono inline-block">
+                  JavaScript ES6+
+                </span>
+                <h2 class="font-title text-2xl sm:text-4xl font-bold tracking-tight text-primary hover:text-brand transition-colors">
+                  <a href="post.html">Dominando Asynchrony e Event Loop no JavaScript Moderno</a>
+                </h2>
+                <p class="text-muted text-sm sm:text-base line-clamp-3">
+                  Entenda como a fila de microtarefas e o Event Loop interagem no V8 para construir rotinas assíncronas de alta performance sem bloquear a thread principal.
+                </p>
+                <div class="flex items-center gap-4 pt-2 text-xs text-muted">
+                  <span>13 de Agosto, 2026</span>
+                  <span>•</span>
+                  <span>6 min de leitura</span>
+                </div>
+              </div>
+              <div class="lg:col-span-5 aspect-video rounded-2xl overflow-hidden bg-subtle">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="JavaScript Code" class="w-full h-full object-cover" />
+              </div>
+            </article>
+
+            <!-- SLIDE 2 -->
+            <article class="w-full flex-shrink-0 grid grid-cols-1 lg:grid-cols-12 items-center p-6 sm:p-10 gap-8">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="px-3 py-1 rounded-md text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider font-mono inline-block">
+                  CSS Grid / Flexbox
+                </span>
+                <h2 class="font-title text-2xl sm:text-4xl font-bold tracking-tight text-primary hover:text-brand transition-colors">
+                  <a href="post.html">Criando Layouts Complexos com Subgrid e CSS Variables</a>
+                </h2>
+                <p class="text-muted text-sm sm:text-base line-clamp-3">
+                  Aprenda a alinhar elementos filhos com grades pai complexas usando Subgrid nativo nos navegadores modernos.
+                </p>
+                <div class="flex items-center gap-4 pt-2 text-xs text-muted">
+                  <span>10 de Agosto, 2026</span>
+                  <span>•</span>
+                  <span>8 min de leitura</span>
+                </div>
+              </div>
+              <div class="lg:col-span-5 aspect-video rounded-2xl overflow-hidden bg-subtle">
+                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="CSS Grid" class="w-full h-full object-cover" />
+              </div>
+            </article>
+
+            <!-- SLIDE 3 -->
+            <article class="w-full flex-shrink-0 grid grid-cols-1 lg:grid-cols-12 items-center p-6 sm:p-10 gap-8">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider font-mono inline-block">
+                  Python Backend
+                </span>
+                <h2 class="font-title text-2xl sm:text-4xl font-bold tracking-tight text-primary hover:text-brand transition-colors">
+                  <a href="post.html">Construindo APIs REST Ultrarrápidas com FastAPI e Python</a>
+                </h2>
+                <p class="text-muted text-sm sm:text-base line-clamp-3">
+                  Descubra por que o FastAPI se tornou o framework padrão para microserviços Python modernos com validação nativa Pydantic.
+                </p>
+                <div class="flex items-center gap-4 pt-2 text-xs text-muted">
+                  <span>05 de Agosto, 2026</span>
+                  <span>•</span>
+                  <span>10 min de leitura</span>
+                </div>
+              </div>
+              <div class="lg:col-span-5 aspect-video rounded-2xl overflow-hidden bg-subtle">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Python Code" class="w-full h-full object-cover" />
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- CONTROLES DO CARROSSEL -->
+        <div class="flex items-center justify-between mt-4">
+          <div class="flex items-center gap-2">
+            <button id="carousel-prev" class="p-2.5 rounded-xl border border-subtle bg-secondary hover:border-brand transition-all text-primary" aria-label="Anterior">
+              ←
+            </button>
+            <button id="carousel-next" class="p-2.5 rounded-xl border border-subtle bg-secondary hover:border-brand transition-all text-primary" aria-label="Próximo">
+              →
+            </button>
+          </div>
+          <div class="flex items-center gap-2" id="carousel-dots">
+            <span class="w-3 h-3 rounded-full bg-brand cursor-pointer"></span>
+            <span class="w-3 h-3 rounded-full bg-subtle cursor-pointer"></span>
+            <span class="w-3 h-3 rounded-full bg-subtle cursor-pointer"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRID DE ARTIGOS RECENTES (3 ARTIGOS UM AO LADO DO OUTRO) -->
+      <section class="mb-16">
+        <div class="mb-6 flex items-center justify-between border-b border-subtle pb-4">
+          <h2 class="font-title text-2xl font-bold tracking-tight">Publicações Recentes</h2>
+          <span class="text-xs text-muted font-mono">3 Artigos</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg">
+            <div class="aspect-video w-full overflow-hidden bg-subtle">
+              <img src="https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=600&q=80" alt="HTML5 Semântico" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-orange-500/10 text-orange-500 border border-orange-500/20 uppercase tracking-wider font-mono inline-block mb-3">
+                  HTML5
+                </span>
+                <h3 class="font-title text-xl font-bold group-hover:text-brand transition-colors leading-snug">
+                  <a href="post.html">Acessibilidade e Semântica no HTML5 Moderno</a>
+                </h3>
+                <p class="text-muted text-sm mt-2 line-clamp-2">
+                  Boas práticas para estruturar documentos que leitores de tela e motores de busca adoram.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+                <span>01 de Agosto, 2026</span>
+                <span>5 min</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg">
+            <div class="aspect-video w-full overflow-hidden bg-subtle">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="WordPress & PHP" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-wider font-mono inline-block mb-3">
+                  WordPress / PHP
+                </span>
+                <h3 class="font-title text-xl font-bold group-hover:text-brand transition-colors leading-snug">
+                  <a href="post.html">Desenvolvendo Themes Block Nativo sem Plugins</a>
+                </h3>
+                <p class="text-muted text-sm mt-2 line-clamp-2">
+                  Como utilizar o editor Gutenberg e arquivos `theme.json` para criar temas leves em PHP.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+                <span>28 de Julho, 2026</span>
+                <span>8 min</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg">
+            <div class="aspect-video w-full overflow-hidden bg-subtle">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Otimização Web" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="p-6 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider font-mono inline-block mb-3">
+                  CSS / Performance
+                </span>
+                <h3 class="font-title text-xl font-bold group-hover:text-brand transition-colors leading-snug">
+                  <a href="post.html">Otimizando Imagens e Assets para Core Web Vitals</a>
+                </h3>
+                <p class="text-muted text-sm mt-2 line-clamp-2">
+                  Técnicas de carregamento preguiçoso (lazy loading) e formatos AVIF para acelerar o LCP.
+                </p>
+              </div>
+              <div class="mt-6 pt-4 border-t border-subtle flex items-center justify-between text-xs text-muted">
+                <span>22 de Julho, 2026</span>
+                <span>4 min</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- SEÇÃO ASSIMÉTRICA: 1 POST GRANDE COM OUTROS POSTS AO LADO -->
+      <section class="mb-16">
+        <div class="mb-6 border-b border-subtle pb-4">
+          <h2 class="font-title text-2xl font-bold tracking-tight">Artigos em Foco</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Post Grande (Esquerda - 7 Colunas) -->
+          <article class="lg:col-span-7 rounded-2xl border border-subtle bg-secondary overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:border-brand/50 hover:shadow-xl">
+            <div class="aspect-video w-full overflow-hidden bg-subtle">
+              <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Arquitetura Web" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            </div>
+            <div class="p-6 sm:p-8 flex-grow flex flex-col justify-between">
+              <div>
+                <span class="px-3 py-1 rounded-md text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 uppercase tracking-wider font-mono inline-block mb-3">
+                  Arquitetura Web
+                </span>
+                <h3 class="font-title text-2xl sm:text-3xl font-bold group-hover:text-brand transition-colors leading-tight mb-3">
+                  <a href="post.html">Micro-Frontends na Prática: Quando e Como Implementar</a>
+                </h3>
+                <p class="text-muted text-sm sm:text-base leading-relaxed mb-6">
+                  Dividir grandes monolitos em aplicações menores pode trazer agilidade para times grandes. Veja os prós e contras dessa estratégia na engenharia de software.
+                </p>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-subtle text-xs text-muted">
+                <span>15 de Julho, 2026</span>
+                <span>12 min de leitura</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Lista de Posts Secundários (Direita - 5 Colunas) -->
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            
+            <!-- Item Lado 1 -->
+            <article class="p-5 rounded-2xl border border-subtle bg-secondary flex gap-4 items-center group transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+              <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80" alt="Python Script" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="flex-grow">
+                <span class="text-xs font-semibold text-emerald-400 font-mono uppercase tracking-wider">Python</span>
+                <h4 class="font-title text-base font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                  <a href="post.html">Automação de Tarefas Repetitivas com Scripts Python</a>
+                </h4>
+                <p class="text-xs text-muted mt-2">10 de Julho, 2026</p>
+              </div>
+            </article>
+
+            <!-- Item Lado 2 -->
+            <article class="p-5 rounded-2xl border border-subtle bg-secondary flex gap-4 items-center group transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+              <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="JavaScript DOM" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="flex-grow">
+                <span class="text-xs font-semibold text-amber-400 font-mono uppercase tracking-wider">JavaScript</span>
+                <h4 class="font-title text-base font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                  <a href="post.html">Manipulação Eficiente da DOM sem Frameworks</a>
+                </h4>
+                <p class="text-xs text-muted mt-2">04 de Julho, 2026</p>
+              </div>
+            </article>
+
+            <!-- Item Lado 3 -->
+            <article class="p-5 rounded-2xl border border-subtle bg-secondary flex gap-4 items-center group transition-all duration-300 hover:border-brand/50 hover:shadow-md">
+              <div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-subtle">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="CSS Animation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div class="flex-grow">
+                <span class="text-xs font-semibold text-blue-400 font-mono uppercase tracking-wider">CSS3</span>
+                <h4 class="font-title text-base font-bold mt-1 group-hover:text-brand transition-colors line-clamp-2">
+                  <a href="post.html">Animações Fluent e Performáticas com CSS Pure</a>
+                </h4>
+                <p class="text-xs text-muted mt-2">29 de Junho, 2026</p>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-subtle bg-secondary py-12 transition-colors duration-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-muted">
+      <div class="flex items-center gap-2">
+        <span class="font-title font-bold text-base text-primary">DevBlog.</span>
+        <span>© 2026 Todos os direitos reservados.</span>
+      </div>
+
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-brand transition-colors">Portfólio</a>
+        <a href="#" class="hover:text-brand transition-colors">GitHub</a>
+        <a href="#" class="hover:text-brand transition-colors">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
